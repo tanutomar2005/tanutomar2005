@@ -1,56 +1,96 @@
+<div align="center">
+
 # 👋 Hi, I'm Tanu Tomar
 
-### B.Tech CSE Student • Developer • Learner
+### `B.Tech CSE Student` · `Developer` · `Learner`
 
-> 🚀 G.R.I.L. Trainee @ NVIDIA  
-> Building my skills, exploring technology, and turning ideas into code.
+**G.R.I.L. Trainee @ NVIDIA** 🚀
+
+<br>
+
+[![GitHub](https://img.shields.io/badge/GitHub-tanutomar2005-181717?style=for-the-badge&logo=github)](https://github.com/tanutomar2005)
+
+</div>
+
+---
+
+## ✦ About Me
+
+I'm a **B.Tech CSE student** passionate about technology, development,
+and continuous learning.
+
+I enjoy turning ideas into code, exploring new technologies,
+and improving my problem-solving skills one step at a time.
+
+> **Learn → Build → Experiment → Improve 🚀**
 
 ---
 
 ## ⚡ Current Focus
 
-- 🧠 Improving problem-solving & DSA
-- 💻 Exploring Web Development
-- 🚀 Learning through G.R.I.L. Training at NVIDIA
-- 🌱 Building and experimenting with new ideas
+<table>
+<tr>
+<td width="50%">
+
+### 🚀 G.R.I.L. Training
+
+Currently developing my technical and problem-solving skills through  
+**G.R.I.L. training at NVIDIA.**
+
+</td>
+
+<td width="50%">
+
+### 💻 Development
+
+Exploring **Web Development**, programming,
+databases and practical software development.
+
+</td>
+</tr>
+</table>
 
 ---
 
-## 🧩 Tech Stack
+# 🧩 Tech Stack
 
 ### 🌐 Frontend
-HTML • CSS • JavaScript • React
+
+<p>
+<img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
+<img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white">
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+<img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB">
+</p>
 
 ### ⚙️ Backend
-Node.js
 
-### 💻 Programming
-Java • C (Basics)
+<p>
+<img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white">
+</p>
+
+### ☕ Programming
+
+<p>
+<img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white">
+<img src="https://img.shields.io/badge/C-Basics-00599C?style=for-the-badge&logo=c&logoColor=white">
+</p>
 
 ### 🗄️ Database
-SQL • PostgreSQL
+
+<p>
+<img src="https://img.shields.io/badge/SQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
+<img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white">
+</p>
 
 ---
 
-## 📚 Currently Learning
+## 🌱 Currently Learning
 
-React • Node.js • Java • SQL • DSA
-
----
-
-## 🎯 My Goal
-
-To become a strong software developer by continuously
-learning, building, and solving real-world problems.
-
----
-
-## 📊 GitHub Activity
-
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=tanutomar2005&show_icons=true&theme=tokyonight)
-
----
-
-## 🤝 Connect With Me
-
-[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/tanutomar2005)
+```text
+Frontend Development     ███████████░░
+Backend Development      ████████░░░░░
+Java                     █████████░░░░
+SQL & Databases          █████████░░░░
+Data Structures          ████████░░░░░
+Problem Solving          ████████░░░░░
