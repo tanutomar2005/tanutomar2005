@@ -1,0 +1,375 @@
+<svg width="900" height="700" viewBox="0 0 900 700"
+xmlns="http://www.w3.org/2000/svg">
+
+<defs>
+
+<radialGradient id="background">
+<stop offset="0%" stop-color="#151B35"/>
+<stop offset="60%" stop-color="#090D1C"/>
+<stop offset="100%" stop-color="#02040A"/>
+</radialGradient>
+
+<linearGradient id="neon"
+x1="0%" y1="0%"
+x2="100%" y2="100%">
+
+<stop offset="0%" stop-color="#00E5FF"/>
+<stop offset="50%" stop-color="#8B5CF6"/>
+<stop offset="100%" stop-color="#FF4ECD"/>
+
+</linearGradient>
+
+<filter id="glow">
+
+<feGaussianBlur stdDeviation="6"
+result="blur"/>
+
+<feMerge>
+
+<feMergeNode in="blur"/>
+<feMergeNode in="SourceGraphic"/>
+
+</feMerge>
+
+</filter>
+
+</defs>
+
+<!-- BACKGROUND -->
+
+<rect width="900"
+height="700"
+rx="35"
+fill="url(#background)"/>
+
+<!-- TITLE -->
+
+<text x="450"
+y="55"
+text-anchor="middle"
+font-family="monospace"
+font-size="28"
+font-weight="bold"
+fill="white"
+letter-spacing="7">
+
+SKILL CLOCK
+
+</text>
+
+<text x="450"
+y="82"
+text-anchor="middle"
+font-family="monospace"
+font-size="12"
+fill="#00E5FF"
+letter-spacing="3">
+
+TANU TOMAR • DEVELOPER SYSTEM
+
+</text>
+
+<!-- CLOCK -->
+
+<g transform="translate(450 360)">
+
+<!-- OUTER GLOW -->
+
+<circle r="265"
+fill="none"
+stroke="#00E5FF"
+stroke-width="3"
+opacity=".25"
+filter="url(#glow)"/>
+
+<!-- ROTATING RING -->
+
+<circle r="250"
+fill="none"
+stroke="url(#neon)"
+stroke-width="4"
+stroke-dasharray="15 12">
+
+<animateTransform
+attributeName="transform"
+type="rotate"
+from="0"
+to="360"
+dur="18s"
+repeatCount="indefinite"/>
+
+</circle>
+
+<!-- SECOND ROTATING RING -->
+
+<circle r="238"
+fill="none"
+stroke="#8B5CF6"
+stroke-width="1"
+stroke-dasharray="5 10">
+
+<animateTransform
+attributeName="transform"
+type="rotate"
+from="360"
+to="0"
+dur="10s"
+repeatCount="indefinite"/>
+
+</circle>
+
+<!-- CLOCK FACE -->
+
+<circle r="215"
+fill="#060A17"
+stroke="#00E5FF"
+stroke-width="3"/>
+
+<circle r="198"
+fill="none"
+stroke="#8B5CF6"
+stroke-width="1"/>
+
+<!-- CLOCK TICKS -->
+
+<g stroke="#00E5FF"
+stroke-linecap="round">
+
+<line x1="0" y1="-198"
+x2="0" y2="-180"
+stroke-width="4"/>
+
+<line x1="99" y1="-172"
+x2="90" y2="-156"
+stroke-width="3"/>
+
+<line x1="172" y1="-99"
+x2="156" y2="-90"
+stroke-width="3"/>
+
+<line x1="198" y1="0"
+x2="180" y2="0"
+stroke-width="4"/>
+
+<line x1="172" y1="99"
+x2="156" y2="90"
+stroke-width="3"/>
+
+<line x1="99" y1="172"
+x2="90" y2="156"
+stroke-width="3"/>
+
+<line x1="0" y1="198"
+x2="0" y2="180"
+stroke-width="4"/>
+
+<line x1="-99" y1="172"
+x2="-90" y2="156"
+stroke-width="3"/>
+
+<line x1="-172" y1="99"
+x2="-156" y2="90"
+stroke-width="3"/>
+
+<line x1="-198" y1="0"
+x2="-180" y2="0"
+stroke-width="4"/>
+
+<line x1="-172" y1="-99"
+x2="-156" y2="-90"
+stroke-width="3"/>
+
+<line x1="-99" y1="-172"
+x2="-90" y2="-156"
+stroke-width="3"/>
+
+</g>
+
+<!-- SKILLS -->
+
+<g
+font-family="monospace"
+font-weight="bold"
+font-size="15"
+text-anchor="middle">
+
+<text x="0" y="-158" fill="#00E5FF">
+HTML
+</text>
+
+<text x="80" y="-137" fill="#8B5CF6">
+CSS
+</text>
+
+<text x="145" y="-65" fill="#FF4ECD">
+JavaScript
+</text>
+
+<text x="158" y="8" fill="#00E5FF">
+React
+</text>
+
+<text x="135" y="85" fill="#76B900">
+Node.js
+</text>
+
+<text x="65" y="150" fill="#8B5CF6">
+PostgreSQL
+</text>
+
+<text x="-65" y="150" fill="#00E5FF">
+SQL
+</text>
+
+<text x="-145" y="85" fill="#FF4ECD">
+C
+</text>
+
+<text x="-158" y="8" fill="#F5B942">
+Java
+</text>
+
+<text x="-145" y="-65" fill="#00E5FF">
+Git
+</text>
+
+<text x="-80" y="-137" fill="#8B5CF6">
+DSA
+</text>
+
+<text x="0" y="185" fill="#FF4ECD">
+WEB DEV
+</text>
+
+</g>
+
+<!-- CENTER -->
+
+<circle r="75"
+fill="#0B1024"
+stroke="url(#neon)"
+stroke-width="3"
+filter="url(#glow)"/>
+
+<circle r="58"
+fill="none"
+stroke="#00E5FF"
+stroke-width="1"
+stroke-dasharray="6 6">
+
+<animateTransform
+attributeName="transform"
+type="rotate"
+from="0"
+to="360"
+dur="7s"
+repeatCount="indefinite"/>
+
+</circle>
+
+<text x="0"
+y="-8"
+text-anchor="middle"
+font-family="monospace"
+font-size="17"
+font-weight="bold"
+fill="white">
+
+TANU TOMAR
+
+</text>
+
+<text x="0"
+y="18"
+text-anchor="middle"
+font-family="monospace"
+font-size="11"
+fill="#00E5FF">
+
+B.TECH CSE
+
+</text>
+
+<!-- MOVING NEEDLE -->
+
+<line x1="0"
+y1="0"
+x2="0"
+y2="-155"
+stroke="#FF4ECD"
+stroke-width="10"
+opacity=".25"
+filter="url(#glow)">
+
+<animateTransform
+attributeName="transform"
+type="rotate"
+from="0"
+to="360"
+dur="8s"
+repeatCount="indefinite"/>
+
+</line>
+
+<line x1="0"
+y1="0"
+x2="0"
+y2="-155"
+stroke="white"
+stroke-width="4"
+stroke-linecap="round">
+
+<animateTransform
+attributeName="transform"
+type="rotate"
+from="0"
+to="360"
+dur="8s"
+repeatCount="indefinite"/>
+
+</line>
+
+<circle r="9"
+fill="#00E5FF"
+stroke="white"
+stroke-width="2"/>
+
+</g>
+
+<!-- STATUS -->
+
+<circle cx="300"
+cy="650"
+r="6"
+fill="#76B900">
+
+<animate
+attributeName="opacity"
+values="1;.2;1"
+dur="1.2s"
+repeatCount="indefinite"/>
+
+</circle>
+
+<text x="320"
+y="655"
+font-family="monospace"
+font-size="13"
+font-weight="bold"
+fill="#76B900">
+
+SYSTEM ACTIVE
+
+</text>
+
+<text x="600"
+y="655"
+font-family="monospace"
+font-size="12"
+fill="#00E5FF">
+
+LEARN • BUILD • EXPLORE
+
+</text>
+
+</svg>
