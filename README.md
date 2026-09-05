@@ -1,21 +1,16 @@
 <div align="center">
 
-<!-- Animated Header -->
-<img src="https://capsule-render.vercel.app/api?type=waving&height=240&section=header&text=TANU%20TOMAR&fontSize=58&fontColor=ffffff&fontAlignY=38&desc=B.Tech%20CSE%20Student%20%7C%20Developer%20%7C%20Learner&descSize=19&descAlignY=61&animation=twinkling&color=0:05001A,25:24105C,50:005F73,75:8A0E63,100:05001A"/>
-
-<!-- Animated Typing -->
-<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=22&duration=2500&pause=800&color=00E5FF&center=true&vCenter=true&width=750&lines=Hey!+I'm+Tanu+Tomar+%F0%9F%91%8B;G.R.I.L.+Trainee+%40+NVIDIA+%F0%9F%9A%80;Web+Development+Enthusiast+%F0%9F%92%BB;Learning+%E2%80%A2+Building+%E2%80%A2+Growing+%E2%9C%A8;Turning+ideas+into+code"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&height=230&section=header&text=TANU%20TOMAR&fontSize=58&fontColor=FFFFFF&fontAlignY=38&desc=B.Tech%20CSE%20Student%20%7C%20Developer%20%7C%20Learner&descSize=19&descAlignY=61&animation=twinkling&color=0:09001F,30:3B0764,60:0369A1,100:BE185D"/>
 
 <br>
 
-<!-- Status Badges -->
-<img src="https://img.shields.io/badge/STATUS-LEARNING-00E5FF?style=for-the-badge&labelColor=080B18"/>
-<img src="https://img.shields.io/badge/FOCUS-DEVELOPMENT-8B5CF6?style=for-the-badge&labelColor=080B18"/>
-<img src="https://img.shields.io/badge/BUILDING-PROJECTS-FF4ECD?style=for-the-badge&labelColor=080B18"/>
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=21&duration=2500&pause=800&color=7C3AED&center=true&vCenter=true&width=750&lines=Hey!+I'm+Tanu+Tomar+%F0%9F%91%8B;G.R.I.L.+Trainee+%40+NVIDIA+%F0%9F%9A%80;Web+Development+Enthusiast+%F0%9F%92%BB;Learning+%E2%80%A2+Building+%E2%80%A2+Growing+%E2%9C%A8"/>
 
 <br><br>
 
-<img src="https://komarev.com/ghpvc/?username=tanutomar2005&label=PROFILE%20VIEWS&color=8B5CF6&style=for-the-badge"/>
+<img src="https://img.shields.io/badge/🚀_CURRENTLY-G.R.I.L._%40_NVIDIA-00E5FF?style=for-the-badge&labelColor=111827"/>
+<img src="https://img.shields.io/badge/💻_FOCUS-WEB_DEVELOPMENT-8B5CF6?style=for-the-badge&labelColor=111827"/>
+<img src="https://img.shields.io/badge/🧠_LEARNING-DSA-FF4ECD?style=for-the-badge&labelColor=111827"/>
 
 </div>
 
@@ -23,7 +18,7 @@
 
 <div align="center">
 
-# ✦ ABOUT ME ✦
+## ✦ ABOUT ME ✦
 
 </div>
 
@@ -31,27 +26,24 @@
 <tr>
 <td width="60%">
 
-### 👋 Hey, I'm Tanu!
+### 👋 Hello, I'm Tanu!
 
 I'm a **B.Tech CSE student** passionate about technology,
-development, and continuous learning.
+development and continuous learning.
 
 🚀 **Currently:** G.R.I.L. Training @ NVIDIA
 
-💻 **Interested in:** Web Development & Software Development
+💻 **Interested in:** Web & Software Development
 
 🧠 **Practicing:** DSA & Problem Solving
 
-🌱 **Mindset:** Learn → Build → Experiment → Improve
-
-✨ I enjoy exploring technologies and turning what I learn
-into practical projects and experiments.
+🌱 **Approach:** Learn → Build → Experiment → Improve
 
 </td>
 
 <td width="40%" align="center">
 
-<img src="https://media.giphy.com/media/qgQUggAC3Pfv687qPC/giphy.gif" width="300"/>
+<img src="https://media.giphy.com/media/qgQUggAC3Pfv687qPC/giphy.gif" width="280"/>
 
 </td>
 </tr>
@@ -61,17 +53,18 @@ into practical projects and experiments.
 
 <div align="center">
 
-# ⚡ CURRENT MISSION ⚡
+## ⚡ CURRENT MISSION
 
 <br>
 
-<img src="https://img.shields.io/badge/🚀_G.R.I.L.-TRAINING_@_NVIDIA-00E5FF?style=for-the-badge&labelColor=080B18"/>
+<img src="https://img.shields.io/badge/NVIDIA-G.R.I.L._TRAINING-00E5FF?style=for-the-badge&logo=nvidia&logoColor=white&labelColor=111827"/>
 
 <br><br>
 
-<img src="https://img.shields.io/badge/💻_WEB-DEVELOPMENT-8B5CF6?style=for-the-badge&labelColor=080B18"/>
-<img src="https://img.shields.io/badge/🧠_PROBLEM-SOLVING-FF4ECD?style=for-the-badge&labelColor=080B18"/>
-<img src="https://img.shields.io/badge/🌱_CONTINUOUS-LEARNING-00D68F?style=for-the-badge&labelColor=080B18"/>
+<img src="https://img.shields.io/badge/LEARN-00E5FF?style=for-the-badge&labelColor=111827"/>
+<img src="https://img.shields.io/badge/BUILD-8B5CF6?style=for-the-badge&labelColor=111827"/>
+<img src="https://img.shields.io/badge/EXPLORE-FF4ECD?style=for-the-badge&labelColor=111827"/>
+<img src="https://img.shields.io/badge/GROW-00D68F?style=for-the-badge&labelColor=111827"/>
 
 </div>
 
@@ -109,7 +102,7 @@ into practical projects and experiments.
 
 <div align="center">
 
-# 📚 CURRENTLY LEARNING
+## 📚 CURRENTLY LEARNING
 
 <br>
 
@@ -137,29 +130,29 @@ into practical projects and experiments.
 
 ### 💻 DEVELOPMENT
 
-Exploring modern  
-web development and  
-building practical projects.
+Exploring modern web
+development and building
+practical projects.
 
 </td>
 
 <td align="center" width="33%">
 
-### 🧠 DSA
+### 🧠 PROBLEM SOLVING
 
-Practicing algorithms,  
-data structures and  
+Practicing programming,
+DSA and logical
 problem solving.
 
 </td>
 
 <td align="center" width="33%">
 
-### 🚀 G.R.I.L.
+### 🚀 NVIDIA TRAINING
 
-Growing technical skills  
-through hands-on  
-training at NVIDIA.
+Developing technical
+skills through
+G.R.I.L. training.
 
 </td>
 
@@ -170,15 +163,15 @@ training at NVIDIA.
 
 <div align="center">
 
-# 📊 GITHUB DASHBOARD
+# 📊 GITHUB STATS
 
 <br>
 
-<img src="https://github-readme-stats.vercel.app/api?username=tanutomar2005&show_icons=true&hide_border=true&bg_color=080B18&title_color=00E5FF&icon_color=FF4ECD&text_color=FFFFFF&ring_color=8B5CF6"/>
+<img src="https://github-readme-stats.vercel.app/api?username=tanutomar2005&show_icons=true&hide_border=true&bg_color=0D1117&title_color=00E5FF&icon_color=FF4ECD&text_color=FFFFFF"/>
 
 <br><br>
 
-<img src="https://github-readme-streak-stats.herokuapp.com/?user=tanutomar2005&hide_border=true&background=080B18&ring=8B5CF6&fire=FF4ECD&currStreakLabel=00E5FF&sideLabels=FFFFFF&dates=888888"/>
+<img src="https://github-readme-streak-stats.herokuapp.com/?user=tanutomar2005&hide_border=true&background=0D1117&ring=8B5CF6&fire=FF4ECD&currStreakLabel=00E5FF&sideLabels=FFFFFF&dates=AAAAAA"/>
 
 </div>
 
@@ -186,39 +179,63 @@ training at NVIDIA.
 
 <div align="center">
 
-# 🏆 GITHUB ACHIEVEMENTS
+# 🌟 MY DEVELOPMENT JOURNEY
 
 <br>
 
-<img src="https://github-profile-trophy.vercel.app/?username=tanutomar2005&theme=onestar&no-frame=true&no-bg=true&margin-w=8&row=1"/>
+<table>
+<tr>
+<td align="center">
 
-</div>
+### 01
+💡
 
----
+**START**
 
-<div align="center">
+Exploring programming
 
-# 📈 CONTRIBUTION FLOW
+</td>
 
-<br>
+<td align="center">→</td>
 
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=tanutomar2005&bg_color=080B18&color=FFFFFF&line=8B5CF6&point=00E5FF&area=true&hide_border=true&custom_title=Tanu's%20Contribution%20Journey" width="95%"/>
+<td align="center">
 
-</div>
+### 02
+🧠
 
----
+**LEARN**
 
-<div align="center">
+Building fundamentals
 
-# 🌌 CODING ATMOSPHERE
+</td>
 
-<br>
+<td align="center">→</td>
 
-<img src="https://capsule-render.vercel.app/api?type=rect&height=100&text=LEARN%20%E2%80%A2%20BUILD%20%E2%80%A2%20EXPLORE%20%E2%80%A2%20GROW&fontSize=22&fontColor=FFFFFF&animation=twinkling&color=0:05001A,50:24105C,100:005F73"/>
+<td align="center">
 
-<br><br>
+### 03
+💻
 
-`CURIOUS` ✦ `CONSISTENT` ✦ `CREATIVE` ✦ `BUILDING`
+**BUILD**
+
+Creating projects
+
+</td>
+
+<td align="center">→</td>
+
+<td align="center">
+
+### 04
+🚀
+
+**GROW**
+
+Becoming a better developer
+
+</td>
+</tr>
+</table>
 
 </div>
 
@@ -230,14 +247,14 @@ training at NVIDIA.
 
 <br>
 
-### **"Learn something. Build something. Improve something."**
+### **Learn. Build. Experiment. Improve. 🚀**
 
 <br>
 
-<img src="https://img.shields.io/badge/LEARN-00E5FF?style=for-the-badge&labelColor=080B18"/>
-<img src="https://img.shields.io/badge/BUILD-8B5CF6?style=for-the-badge&labelColor=080B18"/>
-<img src="https://img.shields.io/badge/EXPLORE-FF4ECD?style=for-the-badge&labelColor=080B18"/>
-<img src="https://img.shields.io/badge/GROW-00D68F?style=for-the-badge&labelColor=080B18"/>
+<img src="https://img.shields.io/badge/01_LEARN-00E5FF?style=for-the-badge&labelColor=111827"/>
+<img src="https://img.shields.io/badge/02_BUILD-8B5CF6?style=for-the-badge&labelColor=111827"/>
+<img src="https://img.shields.io/badge/03_EXPLORE-FF4ECD?style=for-the-badge&labelColor=111827"/>
+<img src="https://img.shields.io/badge/04_GROW-00D68F?style=for-the-badge&labelColor=111827"/>
 
 </div>
 
@@ -245,22 +262,18 @@ training at NVIDIA.
 
 <div align="center">
 
-# 🤝 LET'S CONNECT
+# 🌐 CONNECT
 
 <br>
 
 <a href="https://github.com/tanutomar2005">
-<img src="https://img.shields.io/badge/GitHub-TanuTomar2005-FFFFFF?style=for-the-badge&logo=github&logoColor=white&labelColor=080B18"/>
+
+<img src="https://img.shields.io/badge/GitHub-TanuTomar2005-FFFFFF?style=for-the-badge&logo=github&logoColor=white&labelColor=111827"/>
+
 </a>
 
 <br><br>
 
-### ⭐ Thanks for visiting my profile!
-
-**Explore • Learn • Build • Grow 🚀**
-
-<br>
-
-<img src="https://capsule-render.vercel.app/api?type=waving&height=150&section=footer&animation=twinkling&color=0:05001A,25:24105C,50:005F73,75:8A0E63,100:05001A"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&height=140&section=footer&animation=twinkling&color=0:09001F,30:3B0764,60:0369A1,100:BE185D"/>
 
 </div>
