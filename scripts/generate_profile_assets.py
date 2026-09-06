@@ -88,6 +88,40 @@ def generate_clock() -> None:
     write("skill-clock.svg", svg)
 
 
+def generate_clock_precise() -> None:
+    """Generate the centered 800px analog skill instrument used in the README."""
+    cx, cy = 400, 400
+    skills = [("HTML", 0, COLORS["cyan"]), ("CSS", 1, COLORS["purple"]), ("JavaScript", 2, COLORS["pink"]), ("React", 3, COLORS["cyan"]), ("Node.js", 4, COLORS["green"]), ("Python", 5, COLORS["pink"]), ("SQL", 6, COLORS["purple"]), ("PostgreSQL", 7, COLORS["cyan"]), ("Java", 8, COLORS["pink"]), ("DSA", 9, COLORS["cyan"]), ("Problem Solving", 10, COLORS["purple"]), ("Git & GitHub", 11, COLORS["green"])]
+    now = datetime.now(timezone.utc)
+    hour_angle = ((now.hour % 12) + now.minute / 60 + now.second / 3600) * 30
+    minute_angle = (now.minute + now.second / 60) * 6
+    second_angle = (now.second + now.microsecond / 1_000_000) * 6
+    ticks = []
+    for minute in range(60):
+        angle = math.radians(minute * 6)
+        inner = 218 if minute % 5 == 0 else 229
+        outer = 242
+        ticks.append(f'<line x1="{cx + math.sin(angle) * inner:.1f}" y1="{cy - math.cos(angle) * inner:.1f}" x2="{cx + math.sin(angle) * outer:.1f}" y2="{cy - math.cos(angle) * outer:.1f}" stroke="{COLORS["cyan"]}" stroke-width="{3 if minute % 5 == 0 else 1}" opacity="{1 if minute % 5 == 0 else .38}"/>')
+    label_nodes = []
+    for label, hour, color in skills:
+        angle = math.radians(hour * 30)
+        marker_x = cx + math.sin(angle) * 250
+        marker_y = cy - math.cos(angle) * 250
+        label_x = cx + math.sin(angle) * 294
+        label_y = cy - math.cos(angle) * 294 + (5 if hour in (0, 6) else 0)
+        label_nodes.append(f'<line x1="{marker_x:.1f}" y1="{marker_y:.1f}" x2="{label_x:.1f}" y2="{label_y:.1f}" stroke="{color}" stroke-width="1" opacity=".55"/><circle cx="{marker_x:.1f}" cy="{marker_y:.1f}" r="4" fill="{color}"/><text x="{label_x:.1f}" y="{label_y:.1f}" fill="{color}" font-family="ui-monospace,monospace" font-size="13" font-weight="700" text-anchor="middle">{escape(label)}</text>')
+    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800" role="img" aria-labelledby="title desc"><title id="title">Tanu Tomar futuristic analog skill clock</title><desc id="desc">A professional analog skill clock centered at 400, 400 with HTML, CSS, JavaScript, React, Node.js, Python, SQL, PostgreSQL, Java, DSA, Problem Solving, and Git &amp; GitHub around the face.</desc>
+<defs><radialGradient id="clock-bg"><stop stop-color="#111A35"/><stop offset="1" stop-color="#020617"/></radialGradient><linearGradient id="clock-accent"><stop stop-color="{COLORS["cyan"]}"/><stop offset=".5" stop-color="{COLORS["purple"]}"/><stop offset="1" stop-color="{COLORS["pink"]}"/></linearGradient><filter id="clock-glow"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<rect width="800" height="800" rx="24" fill="url(#clock-bg)" stroke="#172342"/><text x="400" y="42" text-anchor="middle" fill="{COLORS["text"]}" font-family="ui-monospace,monospace" font-size="24" font-weight="700" letter-spacing="5">SKILL CLOCK</text><text x="400" y="67" text-anchor="middle" fill="{COLORS["cyan"]}" font-family="ui-monospace,monospace" font-size="11" letter-spacing="3">TANU TOMAR / DEVELOPER CONTROL</text>
+<circle cx="400" cy="400" r="282" fill="none" stroke="{COLORS["cyan"]}" stroke-width="2" opacity=".14"/><circle cx="400" cy="400" r="270" fill="none" stroke="url(#clock-accent)" stroke-width="4" stroke-dasharray="18 12"><animateTransform attributeName="transform" type="rotate" from="0 400 400" to="360 400 400" dur="28s" repeatCount="indefinite"/></circle><circle cx="400" cy="400" r="258" fill="none" stroke="{COLORS["purple"]}" stroke-width="1" stroke-dasharray="3 13"><animateTransform attributeName="transform" type="rotate" from="360 400 400" to="0 400 400" dur="18s" repeatCount="indefinite"/></circle>
+<circle cx="400" cy="400" r="246" fill="#050914" stroke="{COLORS["cyan"]}" stroke-width="3"/><circle cx="400" cy="400" r="232" fill="none" stroke="#26375D" stroke-width="1"/>
+<g>{''.join(ticks)}</g><g>{''.join(label_nodes)}</g>
+<path d="M180 400H620" stroke="{COLORS["cyan"]}" opacity=".18" stroke-width="2"><animateTransform attributeName="transform" type="translate" values="0 -180;0 180;0 -180" dur="9s" repeatCount="indefinite"/></path>
+<circle cx="400" cy="400" r="78" fill="#081024" stroke="url(#clock-accent)" stroke-width="2" opacity=".96"/><text x="400" y="386" text-anchor="middle" fill="{COLORS["text"]}" font-family="ui-monospace,monospace" font-size="21" font-weight="700">TANU</text><text x="400" y="412" text-anchor="middle" fill="{COLORS["text"]}" font-family="ui-monospace,monospace" font-size="21" font-weight="700">TOMAR</text><text x="400" y="437" text-anchor="middle" fill="{COLORS["cyan"]}" font-family="ui-monospace,monospace" font-size="10" letter-spacing="2">B.TECH CSE</text>
+<g stroke-linecap="round"><line x1="400" y1="400" x2="400" y2="312" stroke="{COLORS["purple"]}" stroke-width="10" opacity=".28" filter="url(#clock-glow)" transform="rotate({hour_angle:.3f} 400 400)"/><line x1="400" y1="400" x2="400" y2="312" stroke="{COLORS["purple"]}" stroke-width="7" transform="rotate({hour_angle:.3f} 400 400)"><animateTransform attributeName="transform" type="rotate" from="{hour_angle:.3f} 400 400" to="{hour_angle + 360:.3f} 400 400" dur="43200s" repeatCount="indefinite"/></line><line x1="400" y1="400" x2="400" y2="260" stroke="{COLORS["cyan"]}" stroke-width="9" opacity=".25" filter="url(#clock-glow)" transform="rotate({minute_angle:.3f} 400 400)"/><line x1="400" y1="400" x2="400" y2="260" stroke="{COLORS["cyan"]}" stroke-width="5" transform="rotate({minute_angle:.3f} 400 400)"><animateTransform attributeName="transform" type="rotate" from="{minute_angle:.3f} 400 400" to="{minute_angle + 360:.3f} 400 400" dur="3600s" repeatCount="indefinite"/></line><line x1="400" y1="400" x2="400" y2="232" stroke="{COLORS["pink"]}" stroke-width="3" transform="rotate({second_angle:.3f} 400 400)"><animateTransform attributeName="transform" type="rotate" from="{second_angle:.3f} 400 400" to="{second_angle + 360:.3f} 400 400" dur="60s" repeatCount="indefinite"/></line></g><circle cx="400" cy="400" r="13" fill="#020617" stroke="url(#clock-accent)" stroke-width="4"/><circle cx="400" cy="400" r="4" fill="{COLORS["text"]}"/><text x="400" y="720" text-anchor="middle" fill="{COLORS["cyan"]}" font-family="ui-monospace,monospace" font-size="12" letter-spacing="2">SKILL CLOCK // ONLINE</text><text x="400" y="744" text-anchor="middle" fill="{COLORS["muted"]}" font-family="ui-monospace,monospace" font-size="10">HOUR / MINUTE / SECOND // LIVE MOTION</text></svg>'''
+    write("skill-clock.svg", svg)
+
+
 def generate_clock_gif() -> None:
     """Create a small raster fallback for renderers that ignore SVG animation."""
     try:
@@ -148,6 +182,23 @@ def generate_static_assets() -> None:
     write("trajectory.svg", svg_start(900, 210, "Learning trajectory").replace("</svg>", "") + text(40, 43, "LEARNING TRAJECTORY", 20, COLORS["text"], "700") + text(40, 67, "A connected path from fundamentals to engineering practice.", 11, COLORS["muted"]) + "".join(trajectory_nodes) + "</svg>")
     write("learning.svg", svg_start(900, 230, "Currently learning").replace("</svg>", "") + text(40, 43, "CURRENTLY LEARNING", 20, COLORS["text"], "700") + text(40, 67, "Status markers describe direction, not mastery.", 11, COLORS["muted"]) + "".join(f'<rect x="{40 + (i % 3) * 275}" y="{88 + (i // 3) * 48}" width="245" height="34" rx="8" fill="{COLORS["panel2"]}" stroke="#1A2A4A"/><circle cx="{57 + (i % 3) * 275}" cy="{105 + (i // 3) * 48}" r="4" fill="{color}"><animate attributeName="opacity" values="1;.35;1" dur="2.4s" repeatCount="indefinite"/></circle><text x="{70 + (i % 3) * 275}" y="{109 + (i // 3) * 48}" fill="{COLORS["text"]}" font-family="ui-monospace,monospace" font-size="11">{escape(label)}</text><text x="{270 + (i % 3) * 275}" y="{109 + (i // 3) * 48}" fill="{color}" font-family="ui-monospace,monospace" font-size="9" text-anchor="end">{escape(status)}</text>' for i, (label, status, color) in enumerate([("DSA", "PRACTICING", COLORS["cyan"]), ("Problem Solving", "ACTIVE", COLORS["purple"]), ("Advanced JavaScript", "EXPLORING", COLORS["pink"]), ("React Development", "PRACTICING", COLORS["green"]), ("Node.js", "EXPLORING", COLORS["cyan"]), ("REST APIs", "LEARNING", COLORS["purple"]), ("Database Design", "EXPLORING", COLORS["pink"]), ("Git & GitHub", "PRACTICING", COLORS["green"]), ("Software Engineering", "LEARNING", COLORS["cyan"])])) + "</svg>")
     write("signals.svg", svg_start(900, 155, "Developer signal").replace("</svg>", "") + text(40, 43, "DEVELOPER SIGNAL", 20, COLORS["text"], "700") + "".join(f'<text x="{45 + i * 205}" y="92" fill="{color}" font-family="ui-monospace,monospace" font-size="11" font-weight="700">{escape(label)}</text><text x="{45 + i * 205}" y="116" fill="{COLORS["muted"]}" font-family="ui-monospace,monospace" font-size="10">{escape(value)}</text>' for i, (label, value, color) in enumerate([("BUILDING", "Web Development", COLORS["cyan"]), ("TRAINING", "G.R.I.L. @ NVIDIA", COLORS["green"]), ("PRACTICING", "DSA & Problem Solving", COLORS["purple"]), ("EXPLORING", "Backend & Databases", COLORS["pink"])])) + "</svg>")
+
+
+def generate_skill_panels() -> None:
+    categories = [("WEB DEVELOPMENT", "HTML · CSS · JavaScript · React", COLORS["cyan"]), ("BACKEND", "Node.js · Python · REST APIs", COLORS["purple"]), ("DATABASE", "SQL · PostgreSQL", COLORS["pink"]), ("PROGRAMMING", "Java · C Basics · Python", COLORS["green"]), ("COMPUTER SCIENCE", "DSA · Problem Solving", COLORS["cyan"]), ("TOOLS", "Git · GitHub", COLORS["purple"])]
+    body = svg_start(900, 285, "Technology universe").replace("</svg>", "") + text(40, 45, "TECHNOLOGY UNIVERSE", 20, COLORS["text"], "700") + text(40, 68, "Current tools and learning areas, without proficiency claims.", 11, COLORS["muted"])
+    for i, (category, skills, color) in enumerate(categories):
+        x = 40 + (i % 3) * 275
+        y = 90 + (i // 3) * 88
+        body += f'<rect x="{x}" y="{y}" width="245" height="66" rx="10" fill="{COLORS["panel2"]}" stroke="#1A2A4A"/><text x="{x + 15}" y="{y + 23}" fill="{color}" font-family="ui-monospace,monospace" font-size="10" font-weight="700">{category}</text><text x="{x + 15}" y="{y + 47}" fill="{COLORS["text"]}" font-family="ui-monospace,monospace" font-size="10">{escape(skills)}</text>'
+    write("technology.svg", body + "</svg>")
+    learning = [("DSA", "PRACTICING", COLORS["cyan"]), ("Python", "LEARNING", COLORS["purple"]), ("Problem Solving", "PRACTICING", COLORS["pink"]), ("Advanced JavaScript", "EXPLORING", COLORS["green"]), ("React", "PRACTICING", COLORS["cyan"]), ("Node.js", "EXPLORING", COLORS["purple"]), ("SQL & PostgreSQL", "LEARNING", COLORS["pink"])]
+    body = svg_start(900, 205, "Current learning active").replace("</svg>", "") + text(40, 43, "CURRENT LEARNING // ACTIVE", 20, COLORS["text"], "700") + text(40, 67, "Status signals show direction, not mastery.", 11, COLORS["muted"])
+    for i, (skill, status, color) in enumerate(learning):
+        x = 40 + (i % 3) * 275
+        y = 90 + (i // 3) * 42
+        body += f'<rect x="{x}" y="{y}" width="245" height="30" rx="8" fill="{COLORS["panel2"]}" stroke="#1A2A4A"/><circle cx="{x + 15}" cy="{y + 15}" r="4" fill="{color}"><animate attributeName="opacity" values="1;.35;1" dur="2.4s" repeatCount="indefinite"/></circle><text x="{x + 28}" y="{y + 19}" fill="{COLORS["text"]}" font-family="ui-monospace,monospace" font-size="10">{escape(skill)}</text><text x="{x + 232}" y="{y + 19}" fill="{color}" font-family="ui-monospace,monospace" font-size="9" text-anchor="end">{status}</text>'
+    write("learning.svg", body + "</svg>")
 
 
 def fetch_data() -> tuple[dict, list, Counter, list, dict | None]:
@@ -251,9 +302,10 @@ def generate_dynamic(profile: dict, repos: list, languages: Counter, events: lis
 
 def main() -> int:
     ASSETS.mkdir(exist_ok=True)
-    generate_clock()
+    generate_clock_precise()
     generate_clock_gif()
     generate_static_assets()
+    generate_skill_panels()
     try:
         profile, repos, languages, events, extra = fetch_data()
         generate_dynamic(profile, repos, languages, events, extra)

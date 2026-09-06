@@ -48,7 +48,7 @@
 <img src="./assets/trajectory.svg" alt="Learning trajectory from foundations through frontend, backend, databases, and engineering" width="100%" />
 </div>
 
-## CURRENTLY LEARNING
+## CURRENT LEARNING // ACTIVE
 
 <div align="center">
 <img src="./assets/learning.svg" alt="Current learning topics with active, practicing, exploring, and learning status markers" width="100%" />
