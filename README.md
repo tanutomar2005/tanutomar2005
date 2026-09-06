@@ -1,153 +1,81 @@
 <div align="center">
 
-# <span style="letter-spacing:4px;color:#00E5FF">TANU TOMAR</span>
+# TANU TOMAR
 
-<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=26&duration=2800&pause=700&color=00E5FF&center=true&vCenter=true&width=760&lines=B.Tech+CSE+Student;G.R.I.L.+Training+@+NVIDIA;Web+Development+%7C+React+%7C+Node.js+%7C+SQL" alt="Tanu Tomar typing"/>
+`B.Tech Computer Science & Engineering`  ·  `G.R.I.L. Training @ NVIDIA`
+
+**Web Development · React · Node.js · SQL**
 
 <br>
 
+<img src="./assets/hero.svg" alt="Tanu Tomar developer mission control" width="100%" />
+
 </div>
 
----
+## DEVELOPER ORBIT
 
 <div align="center">
-
-<!-- Hero + Skill Clock -->
-
-<table><tr>
-
-<td valign="middle" align="center" width="48%">
-
-<img src="./assets/skill-clock.svg" alt="Tanu Tomar animated skill clock" width="100%" style="max-width:520px;" />
-
-</td>
-
-<td valign="top" width="52%">
-
-### DEVELOPER DASHBOARD
-
-- Name: **Tanu Tomar**
-- Education: **B.Tech Computer Science & Engineering**
-- Current: **G.R.I.L. Training @ NVIDIA**
-- Primary interests: Web Development · Frontend · Backend · Databases · Programming · Continuous learning
-
-<br>
-
-<img src="https://img.shields.io/badge/G.R.I.L.%20TRAINING-NVIDIA-76B900?style=for-the-badge&logo=nvidia&logoColor=white&labelColor=070B16" alt="NVIDIA badge" />
-
-<img src="https://img.shields.io/badge/B.TECH-CSE-8B5CF6?style=for-the-badge&labelColor=070B16" alt="B.Tech CSE" />
-
-
-</td>
-
-</tr></table>
-
+<img src="./assets/skill-clock.svg" alt="Animated analog skill clock showing Tanu Tomar's technology universe" width="100%" />
 </div>
-
----
 
 ## DEVELOPER PROFILE
 
-<div align="center">
-
-<em>Concise, authentic, and student/developer oriented.</em>
-
-</div>
-
-
-- I am a B.Tech Computer Science & Engineering student currently undergoing G.R.I.L. Training at NVIDIA.
-- I enjoy building web interfaces and learning system fundamentals across frontend, backend and databases.
-- Currently focused on exploring React, Node.js and SQL/PostgreSQL while strengthening programming fundamentals.
-
----
+I am Tanu Tomar, a B.Tech Computer Science & Engineering student currently undergoing G.R.I.L. Training at NVIDIA. I am interested in web development and exploring frontend, backend, databases, programming, and continuous learning.
 
 ## CURRENT MISSION
 
 <div align="center">
-
-<img src="https://img.shields.io/badge/CURRENT%20MISSION-G.R.I.L.%20TRAINING%20@%20NVIDIA-76B900?style=for-the-badge&labelColor=070B16" alt="Current mission" />
-
+<img src="./assets/mission.svg" alt="Current mission: G.R.I.L. Training at NVIDIA" width="100%" />
 </div>
-
-A short, honest description: gaining practical exposure and improving foundational engineering skills through hands-on training.
-
----
 
 ## TECHNOLOGY UNIVERSE
 
 <div align="center">
-
-![Top languages](./assets/top-languages.svg)
-
+<img src="./assets/technology.svg" alt="Technology universe grouped by frontend, backend, database, and programming" width="100%" />
 </div>
-
----
 
 ## CURRENT FOCUS
 
 <div align="center">
-
-- Web Development — Exploring
-- React — Learning & Building
-- Node.js — Exploring Backend Fundamentals
-- SQL / PostgreSQL — Learning Databases
-- Programming Fundamentals — Practicing Java & C Basics
-
+<img src="./assets/focus.svg" alt="Current learning focus across web development, React, Node.js, SQL, PostgreSQL, and programming fundamentals" width="100%" />
 </div>
-
----
 
 ## LEARNING PATH
 
 <div align="center">
-
-![Learning Path](./assets/activity.svg)
-
+<img src="./assets/learning-path.svg" alt="Learning path from foundations through building and improving" width="100%" />
 </div>
-
----
 
 ## GITHUB TELEMETRY
 
 <div align="center">
-
-![GitHub Stats](./assets/github-stats.svg)
-
+<img src="./assets/github-stats.svg" alt="Dynamically generated GitHub telemetry" width="100%" />
 </div>
-
----
 
 ## CONTRIBUTION UNIVERSE
 
 <div align="center">
-
-![Contributions](./assets/contributions.svg)
-
+<img src="./assets/contributions.svg" alt="Dynamically generated GitHub contribution calendar" width="100%" />
 </div>
 
----
+## GITHUB ACTIVITY
+
+<div align="center">
+<img src="./assets/activity.svg" alt="Dynamically generated recent GitHub activity" width="100%" />
+</div>
 
 ## DEVELOPER MINDSET
 
-> Don't just learn technology. Understand it. Build with it. Improve with it.
+> Learn with curiosity. Build with care. Debug with patience. Keep improving.
 
----
-
-## CONNECT
+## GITHUB / CONNECT
 
 <div align="center">
 
-[![GitHub](https://img.shields.io/badge/GitHub-tanutomar2005-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/tanutomar2005)
+[![GitHub](https://img.shields.io/badge/GitHub-tanutomar2005-070B16?style=for-the-badge&logo=github&logoColor=00E5FF)](https://github.com/tanutomar2005)
 
 </div>
 
----
-
 <div align="center">
-
-![Footer](./assets/activity.svg)
-
-
-<p style="color:#00E5FF">LEARN • BUILD • DEBUG • EVOLVE</p>
-
+<img src="./assets/footer.svg" alt="Learn, build, debug, evolve" width="100%" />
 </div>

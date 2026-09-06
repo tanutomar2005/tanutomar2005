@@ -1,0 +1,45 @@
+name: Update profile telemetry
+
+on:
+  push:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 */6 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout profile repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install image fallback dependency
+        run: python -m pip install --disable-pip-version-check --no-input Pillow
+
+      - name: Generate local profile assets
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_USERNAME: tanutomar2005
+        run: python scripts/generate_profile_assets.py
+
+      - name: Commit changed generated assets
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md assets scripts .github/workflows/update-profile.yml
+          if git diff --cached --quiet; then
+            echo "No profile changes detected."
+          else
+            git commit -m "chore: refresh profile telemetry [skip ci]"
+            git push
+          fi
