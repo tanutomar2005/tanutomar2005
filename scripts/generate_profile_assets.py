@@ -91,7 +91,7 @@ def generate_clock() -> None:
 def generate_clock_precise() -> None:
     """Generate the centered 800px analog skill instrument used in the README."""
     cx, cy = 400, 400
-    skills = [("HTML", 0, COLORS["cyan"]), ("CSS", 1, COLORS["purple"]), ("JavaScript", 2, COLORS["pink"]), ("React", 3, COLORS["cyan"]), ("Node.js", 4, COLORS["green"]), ("Python", 5, COLORS["pink"]), ("SQL", 6, COLORS["purple"]), ("PostgreSQL", 7, COLORS["cyan"]), ("Java", 8, COLORS["pink"]), ("DSA", 9, COLORS["cyan"]), ("Problem Solving", 10, COLORS["purple"]), ("Git & GitHub", 11, COLORS["green"])]
+    skills = [("HTML", 0, COLORS["cyan"]), ("CSS", 1, COLORS["purple"]), ("JavaScript", 2, COLORS["pink"]), ("React", 3, COLORS["cyan"]), ("Node.js", 4, COLORS["green"]), ("Python", 5, COLORS["pink"]), ("SQL", 6, COLORS["purple"]), ("PostgreSQL", 7, COLORS["cyan"]), ("Java", 8, COLORS["pink"]), ("DSA", 9, COLORS["cyan"]), ("Problem Solving", 10, COLORS["purple"]), ("C Basics", 11, COLORS["green"])]
     now = datetime.now(timezone.utc)
     hour_angle = ((now.hour % 12) + now.minute / 60 + now.second / 3600) * 30
     minute_angle = (now.minute + now.second / 60) * 6
