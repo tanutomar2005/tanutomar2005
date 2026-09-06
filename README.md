@@ -2,9 +2,9 @@
 
 # TANU TOMAR
 
-`B.Tech Computer Science & Engineering`  ·  `G.R.I.L. Training @ NVIDIA`
+`DEVELOPER CONTROL CENTER`  ·  `B.Tech CSE`
 
-**Web Development · React · Node.js · SQL**
+**Currently undergoing G.R.I.L. training at NVIDIA**
 
 <br>
 
@@ -12,20 +12,28 @@
 
 </div>
 
-## DEVELOPER ORBIT
-
-<div align="center">
-<img src="./assets/skill-clock.svg" alt="Animated analog skill clock showing Tanu Tomar's technology universe" width="100%" />
-</div>
-
 ## DEVELOPER PROFILE
 
-I am Tanu Tomar, a B.Tech Computer Science & Engineering student currently undergoing G.R.I.L. Training at NVIDIA. I am interested in web development and exploring frontend, backend, databases, programming, and continuous learning.
+<div align="center">
+<img src="./assets/profile.svg" alt="Tanu Tomar developer profile telemetry panel" width="100%" />
+</div>
 
-## CURRENT MISSION
+## CURRENT MISSION // 2026
 
 <div align="center">
-<img src="./assets/mission.svg" alt="Current mission: G.R.I.L. Training at NVIDIA" width="100%" />
+<img src="./assets/mission.svg" alt="Current mission: G.R.I.L. training at NVIDIA with active learning signals" width="100%" />
+</div>
+
+## SKILL CLOCK
+
+<div align="center">
+<img src="./assets/skill-clock.svg" alt="Animated futuristic analog skill clock with 12 developer technology labels" width="100%" />
+</div>
+
+## SKILL CONSTELLATION
+
+<div align="center">
+<img src="./assets/constellation.svg" alt="Skill constellation covering languages, frontend, backend, databases, computer science, and tools" width="100%" />
 </div>
 
 ## TECHNOLOGY UNIVERSE
@@ -34,34 +42,52 @@ I am Tanu Tomar, a B.Tech Computer Science & Engineering student currently under
 <img src="./assets/technology.svg" alt="Technology universe grouped by frontend, backend, database, and programming" width="100%" />
 </div>
 
-## CURRENT FOCUS
+## LEARNING TRAJECTORY
 
 <div align="center">
-<img src="./assets/focus.svg" alt="Current learning focus across web development, React, Node.js, SQL, PostgreSQL, and programming fundamentals" width="100%" />
+<img src="./assets/trajectory.svg" alt="Learning trajectory from foundations through frontend, backend, databases, and engineering" width="100%" />
 </div>
 
-## LEARNING PATH
+## CURRENTLY LEARNING
 
 <div align="center">
-<img src="./assets/learning-path.svg" alt="Learning path from foundations through building and improving" width="100%" />
+<img src="./assets/learning.svg" alt="Current learning topics with active, practicing, exploring, and learning status markers" width="100%" />
+</div>
+
+## DEVELOPER SIGNAL
+
+<div align="center">
+<img src="./assets/signals.svg" alt="Developer signal dashboard for building, training, practicing, and exploring" width="100%" />
 </div>
 
 ## GITHUB TELEMETRY
 
 <div align="center">
-<img src="./assets/github-stats.svg" alt="Dynamically generated GitHub telemetry" width="100%" />
+<img src="./assets/github-stats.svg" alt="Dynamically generated GitHub telemetry for repositories, followers, stars, pull requests, and issues" width="100%" />
 </div>
 
 ## CONTRIBUTION UNIVERSE
 
 <div align="center">
-<img src="./assets/contributions.svg" alt="Dynamically generated GitHub contribution calendar" width="100%" />
+<img src="./assets/contributions.svg" alt="Dynamically generated GitHub contribution universe and activity heatmap" width="100%" />
 </div>
 
 ## GITHUB ACTIVITY
 
 <div align="center">
-<img src="./assets/activity.svg" alt="Dynamically generated recent GitHub activity" width="100%" />
+<img src="./assets/activity.svg" alt="Dynamically generated recent public GitHub activity" width="100%" />
+</div>
+
+## REPOSITORY RADAR
+
+<div align="center">
+<img src="./assets/repository-radar.svg" alt="Dynamically detected public repository radar with descriptions, languages, stars, and update dates" width="100%" />
+</div>
+
+## LANGUAGE TELEMETRY
+
+<div align="center">
+<img src="./assets/top-languages.svg" alt="Dynamically calculated language telemetry from public repositories" width="100%" />
 </div>
 
 ## DEVELOPER MINDSET
@@ -77,5 +103,5 @@ I am Tanu Tomar, a B.Tech Computer Science & Engineering student currently under
 </div>
 
 <div align="center">
-<img src="./assets/footer.svg" alt="Learn, build, debug, evolve" width="100%" />
+<img src="./assets/footer.svg" alt="Build, learn, debug, repeat footer for Tanu Tomar" width="100%" />
 </div>

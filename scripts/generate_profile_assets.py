@@ -60,7 +60,11 @@ def write(name: str, content: str) -> None:
 
 
 def generate_clock() -> None:
-    skills = [("HTML", 0, COLORS["cyan"]), ("CSS", 1, COLORS["purple"]), ("JavaScript", 2, COLORS["pink"]), ("React", 3, COLORS["cyan"]), ("Node.js", 4, COLORS["green"]), ("PostgreSQL", 5, COLORS["purple"]), ("SQL", 6, COLORS["cyan"]), ("Java", 7, COLORS["pink"]), ("C Basics", 8, COLORS["purple"])]
+    skills = [("HTML", 0, COLORS["cyan"]), ("CSS", 1, COLORS["purple"]), ("JavaScript", 2, COLORS["pink"]), ("React", 3, COLORS["cyan"]), ("Node.js", 4, COLORS["green"]), ("SQL", 5, COLORS["purple"]), ("PostgreSQL", 6, COLORS["cyan"]), ("Java", 7, COLORS["pink"]), ("C Basics", 8, COLORS["purple"]), ("DSA", 9, COLORS["cyan"]), ("Git & GitHub", 10, COLORS["green"]), ("REST APIs", 11, COLORS["pink"])]
+    now = datetime.now(timezone.utc)
+    hour_angle = ((now.hour % 12) + now.minute / 60 + now.second / 3600) * 30
+    minute_angle = (now.minute + now.second / 60) * 6
+    second_angle = (now.second + now.microsecond / 1_000_000) * 6
     marks = []
     for minute in range(60):
         angle = math.radians(minute * 6)
@@ -72,23 +76,22 @@ def generate_clock() -> None:
     labels = []
     for label, hour, color in skills:
         angle = math.radians(hour * 30)
-        x, y = 450 + math.sin(angle) * 194, 362 - math.cos(angle) * 194
+        x, y = 450 + math.sin(angle) * 194, 357 - math.cos(angle) * 194
         labels.append(text(round(x), round(y), label, 14, color, "700", "middle"))
     svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="900" height="700" viewBox="0 0 900 700" role="img" aria-labelledby="title desc"><title id="title">Tanu Tomar animated skill clock</title><desc id="desc">A futuristic analog clock with HTML, CSS, JavaScript, React, Node.js, PostgreSQL, SQL, Java, and C Basics around the dial.</desc>
 <defs><radialGradient id="bg"><stop stop-color="#111A35"/><stop offset="1" stop-color="{COLORS["bg"]}"/></radialGradient><linearGradient id="neon"><stop stop-color="{COLORS["cyan"]}"/><stop offset=".5" stop-color="{COLORS["purple"]}"/><stop offset="1" stop-color="{COLORS["pink"]}"/></linearGradient><filter id="glow"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
 <rect width="900" height="700" rx="24" fill="url(#bg)" stroke="#172342"/><text x="450" y="48" text-anchor="middle" fill="{COLORS["text"]}" font-family="ui-monospace,monospace" font-weight="700" font-size="25" letter-spacing="5">SKILL CLOCK</text><text x="450" y="74" text-anchor="middle" fill="{COLORS["cyan"]}" font-family="ui-monospace,monospace" font-size="11" letter-spacing="3">TANU TOMAR / DEVELOPER ORBIT</text>
 <g fill="none" transform="translate(0 0)"><circle cx="450" cy="357" r="274" stroke="{COLORS["cyan"]}" opacity=".16" stroke-width="2"/><circle cx="450" cy="357" r="264" stroke="url(#neon)" stroke-width="4" stroke-dasharray="16 12" opacity=".85"><animateTransform attributeName="transform" type="rotate" from="0 450 357" to="360 450 357" dur="24s" repeatCount="indefinite"/></circle><circle cx="450" cy="357" r="256" stroke="{COLORS["purple"]}" stroke-width="1" stroke-dasharray="3 11" opacity=".8"><animateTransform attributeName="transform" type="rotate" from="360 450 357" to="0 450 357" dur="16s" repeatCount="indefinite"/></circle><circle cx="450" cy="357" r="218" fill="#060A17" stroke="{COLORS["cyan"]}" stroke-width="3"/><circle cx="450" cy="357" r="205" stroke="#25355F" stroke-width="1"/></g>
 <g>{''.join(marks)}</g><g>{''.join(labels)}</g>
-<g stroke-linecap="round" transform="rotate(0 450 357)"><line x1="450" y1="357" x2="450" y2="250" stroke="{COLORS["purple"]}" stroke-width="9" opacity=".28" filter="url(#glow)"/><line x1="450" y1="357" x2="450" y2="250" stroke="{COLORS["purple"]}" stroke-width="6"><animateTransform attributeName="transform" type="rotate" from="0 450 357" to="360 450 357" dur="43200s" repeatCount="indefinite"/></line></g>
-<g stroke-linecap="round"><line x1="450" y1="357" x2="450" y2="215" stroke="{COLORS["cyan"]}" stroke-width="8" opacity=".25" filter="url(#glow)"/><line x1="450" y1="357" x2="450" y2="215" stroke="{COLORS["cyan"]}" stroke-width="5"><animateTransform attributeName="transform" type="rotate" from="0 450 357" to="360 450 357" dur="3600s" repeatCount="indefinite"/></line><line x1="450" y1="357" x2="450" y2="190" stroke="{COLORS["pink"]}" stroke-width="3"><animateTransform attributeName="transform" type="rotate" from="0 450 357" to="360 450 357" dur="60s" repeatCount="indefinite"/></line></g>
-<circle cx="450" cy="357" r="15" fill="{COLORS["bg"]}" stroke="url(#neon)" stroke-width="4"/><circle cx="450" cy="357" r="5" fill="{COLORS["text"]}"/><text x="450" y="340" fill="{COLORS["muted"]}" font-family="ui-monospace,monospace" font-size="10" text-anchor="middle" letter-spacing="2">SYSTEM ACTIVE</text><text x="450" y="650" fill="{COLORS["cyan"]}" font-family="ui-monospace,monospace" font-size="12" text-anchor="middle" letter-spacing="2">HOUR / MINUTE / SECOND // LIVE MOTION</text></svg>'''
+<g stroke-linecap="round"><line x1="450" y1="357" x2="450" y2="250" stroke="{COLORS["purple"]}" stroke-width="9" opacity=".28" filter="url(#glow)" transform="rotate({hour_angle:.3f} 450 357)"/><line x1="450" y1="357" x2="450" y2="250" stroke="{COLORS["purple"]}" stroke-width="6" transform="rotate({hour_angle:.3f} 450 357)"><animateTransform attributeName="transform" type="rotate" from="{hour_angle:.3f} 450 357" to="{hour_angle + 360:.3f} 450 357" dur="43200s" repeatCount="indefinite"/></line><line x1="450" y1="357" x2="450" y2="215" stroke="{COLORS["cyan"]}" stroke-width="8" opacity=".25" filter="url(#glow)" transform="rotate({minute_angle:.3f} 450 357)"/><line x1="450" y1="357" x2="450" y2="215" stroke="{COLORS["cyan"]}" stroke-width="5" transform="rotate({minute_angle:.3f} 450 357)"><animateTransform attributeName="transform" type="rotate" from="{minute_angle:.3f} 450 357" to="{minute_angle + 360:.3f} 450 357" dur="3600s" repeatCount="indefinite"/></line><line x1="450" y1="357" x2="450" y2="190" stroke="{COLORS["pink"]}" stroke-width="3" transform="rotate({second_angle:.3f} 450 357)"><animateTransform attributeName="transform" type="rotate" from="{second_angle:.3f} 450 357" to="{second_angle + 360:.3f} 450 357" dur="60s" repeatCount="indefinite"/></line></g>
+<circle cx="450" cy="357" r="15" fill="{COLORS["bg"]}" stroke="url(#neon)" stroke-width="4"/><circle cx="450" cy="357" r="5" fill="{COLORS["text"]}"/><text x="450" y="340" fill="{COLORS["muted"]}" font-family="ui-monospace,monospace" font-size="10" text-anchor="middle" letter-spacing="2">SKILL CLOCK // ONLINE</text><text x="450" y="650" fill="{COLORS["cyan"]}" font-family="ui-monospace,monospace" font-size="12" text-anchor="middle" letter-spacing="2">HOUR / MINUTE / SECOND // LIVE MOTION</text></svg>'''
     write("skill-clock.svg", svg)
 
 
 def generate_clock_gif() -> None:
     """Create a small raster fallback for renderers that ignore SVG animation."""
     try:
-        from PIL import Image, ImageDraw
+        from PIL import Image, ImageDraw  # pyright: ignore[reportMissingImports]
     except ImportError:
         print("warning: Pillow is unavailable; skill-clock.gif was not regenerated")
         return
@@ -121,7 +124,7 @@ def generate_static_assets() -> None:
         write(name, body + "</svg>")
 
     write("hero.svg", svg_start(900, 150, "Tanu Tomar developer mission control").replace("</svg>", "") + text(42, 58, "DEVELOPER MISSION CONTROL", 12, COLORS["cyan"], "700") + text(42, 98, "Learn deliberately. Build honestly. Keep moving.", 27, COLORS["text"], "700") + text(42, 126, "STATUS / CURIOUS · PRACTICING · IMPROVING", 12, COLORS["muted"]) + "</svg>")
-    write("mission.svg", svg_start(900, 155, "G.R.I.L. Training at NVIDIA").replace("</svg>", "") + text(42, 58, "CURRENT MISSION", 12, COLORS["green"], "700") + text(42, 101, "G.R.I.L. TRAINING @ NVIDIA", 26, COLORS["text"], "700") + text(42, 130, "Building practical exposure through focused learning and hands-on training.", 13, COLORS["muted"]) + "</svg>")
+    write("mission.svg", svg_start(900, 175, "G.R.I.L. Training at NVIDIA").replace("</svg>", "") + text(42, 58, "CURRENT MISSION // 2026", 12, COLORS["green"], "700") + text(42, 99, "G.R.I.L. TRAINING @ NVIDIA", 26, COLORS["text"], "700") + text(42, 128, "Strengthening engineering fundamentals while expanding software development and problem-solving skills.", 13, COLORS["muted"]) + text(42, 157, "ACTIVE     LEARNING     BUILDING     EXPLORING", 10, COLORS["green"], "700") + "</svg>")
     write("technology.svg", svg_start(900, 205, "Technology universe").replace("</svg>", "") + text(40, 45, "TECHNOLOGY UNIVERSE", 20, COLORS["text"], "700") + "".join(f'<rect x="{40 + i * 215}" y="75" width="195" height="90" rx="10" fill="{COLORS["panel2"]}" stroke="#1A2A4A"/><text x="{55 + i * 215}" y="101" fill="{color}" font-family="ui-monospace,monospace" font-size="11" font-weight="700">{group}</text><text x="{55 + i * 215}" y="130" fill="{COLORS["text"]}" font-family="ui-monospace,monospace" font-size="12">{escape(skills)}</text>' for i, (group, skills, color) in enumerate([("FRONTEND", "HTML · CSS · JS · React", COLORS["cyan"]), ("BACKEND", "Node.js", COLORS["purple"]), ("DATABASE", "SQL · PostgreSQL", COLORS["pink"]), ("PROGRAMMING", "Java · C Basics", COLORS["green"])])) + "</svg>")
     panel("focus.svg", "CURRENT FOCUS", "Learning signals, not proficiency claims.", [("WEB DEVELOPMENT", "EXPLORING", COLORS["cyan"]), ("REACT", "LEARNING", COLORS["purple"]), ("NODE.JS", "PRACTICING", COLORS["green"]), ("SQL", "LEARNING", COLORS["pink"]), ("POSTGRESQL", "EXPLORING", COLORS["cyan"]), ("PROGRAMMING", "PRACTICING", COLORS["purple"])], 205)
     path = [("FOUNDATIONS", COLORS["cyan"]), ("FRONTEND", COLORS["purple"]), ("BACKEND", COLORS["pink"]), ("DATABASES", COLORS["green"]), ("BUILD", COLORS["cyan"]), ("IMPROVE", COLORS["purple"])]
@@ -133,6 +136,18 @@ def generate_static_assets() -> None:
             body += f'<path d="M{x+122} 96h16" stroke="{COLORS["muted"]}"/><path d="m{x+134} 90 6 6-6 6" fill="none" stroke="{COLORS["muted"]}"/>'
     write("learning-path.svg", body + "</svg>")
     write("footer.svg", svg_start(900, 90, "Learn build debug evolve").replace("</svg>", "") + text(450, 56, "LEARN  ·  BUILD  ·  DEBUG  ·  EVOLVE", 18, COLORS["text"], "700", "middle") + "</svg>")
+    write("profile.svg", svg_start(900, 245, "Developer profile").replace("</svg>", "") + text(40, 45, "DEVELOPER PROFILE", 20, COLORS["text"], "700") + text(40, 70, "IDENTITY / Tanu Tomar", 12, COLORS["cyan"], "700") + "".join(f'<rect x="{40 + (i % 2) * 410}" y="{90 + (i // 2) * 48}" width="380" height="34" rx="8" fill="{COLORS["panel2"]}" stroke="#1A2A4A"/><text x="{55 + (i % 2) * 410}" y="{112 + (i // 2) * 48}" fill="{color}" font-family="ui-monospace,monospace" font-size="10" font-weight="700">{label}</text><text x="{200 + (i % 2) * 410}" y="{112 + (i // 2) * 48}" fill="{COLORS["text"]}" font-family="ui-monospace,monospace" font-size="11">{value}</text>' for i, (label, value, color) in enumerate([("ROLE", "B.Tech CSE Student · Developer", COLORS["purple"]), ("CURRENT MISSION", "G.R.I.L. Training @ NVIDIA", COLORS["green"]), ("FOCUS", "Web Development · DSA · Problem Solving", COLORS["pink"]), ("INTERESTS", "Frontend · Backend · Databases", COLORS["cyan"]), ("LEARNING MODE", "Build → Practice → Experiment → Improve", COLORS["purple"])])) + "</svg>")
+    write("constellation.svg", svg_start(900, 220, "Skill constellation").replace("</svg>", "") + text(40, 45, "SKILL CONSTELLATION", 20, COLORS["text"], "700") + text(40, 68, "A working map of the systems Tanu is learning and practicing.", 11, COLORS["muted"]) + "".join(f'<rect x="{40 + (i % 3) * 275}" y="{88 + (i // 3) * 52}" width="245" height="38" rx="8" fill="{COLORS["panel2"]}" stroke="#1A2A4A"/><text x="{55 + (i % 3) * 275}" y="{111 + (i // 3) * 52}" fill="{color}" font-family="ui-monospace,monospace" font-size="10" font-weight="700">{label}</text><text x="{55 + (i % 3) * 275}" y="{124 + (i // 3) * 52}" fill="{COLORS["text"]}" font-family="ui-monospace,monospace" font-size="10">{value}</text>' for i, (label, value, color) in enumerate([("LANGUAGES", "Java · JavaScript · C · SQL", COLORS["cyan"]), ("FRONTEND", "HTML · CSS · React", COLORS["purple"]), ("BACKEND", "Node.js · REST APIs", COLORS["pink"]), ("DATABASE", "SQL · PostgreSQL", COLORS["green"]), ("COMPUTER SCIENCE", "DSA · Problem Solving", COLORS["cyan"]), ("TOOLS", "Git · GitHub", COLORS["purple"])])) + "</svg>")
+    trajectory_nodes = []
+    trajectory = [("FOUNDATIONS", COLORS["cyan"]), ("FRONTEND", COLORS["purple"]), ("BACKEND", COLORS["pink"]), ("DATABASE", COLORS["green"]), ("ENGINEERING", COLORS["cyan"])]
+    for i, (label, color) in enumerate(trajectory):
+        x = 72 + i * 172
+        trajectory_nodes.append(f'<circle cx="{x}" cy="115" r="12" fill="{COLORS["bg"]}" stroke="{color}" stroke-width="3"/><text x="{x}" y="158" fill="{COLORS["text"]}" font-family="ui-monospace,monospace" font-size="10" text-anchor="middle">{label}</text>')
+        if i < len(trajectory) - 1:
+            trajectory_nodes.append(f'<path d="M{x + 12} 115h148" stroke="{COLORS["muted"]}" stroke-dasharray="4 6"/>')
+    write("trajectory.svg", svg_start(900, 210, "Learning trajectory").replace("</svg>", "") + text(40, 43, "LEARNING TRAJECTORY", 20, COLORS["text"], "700") + text(40, 67, "A connected path from fundamentals to engineering practice.", 11, COLORS["muted"]) + "".join(trajectory_nodes) + "</svg>")
+    write("learning.svg", svg_start(900, 230, "Currently learning").replace("</svg>", "") + text(40, 43, "CURRENTLY LEARNING", 20, COLORS["text"], "700") + text(40, 67, "Status markers describe direction, not mastery.", 11, COLORS["muted"]) + "".join(f'<rect x="{40 + (i % 3) * 275}" y="{88 + (i // 3) * 48}" width="245" height="34" rx="8" fill="{COLORS["panel2"]}" stroke="#1A2A4A"/><circle cx="{57 + (i % 3) * 275}" cy="{105 + (i // 3) * 48}" r="4" fill="{color}"><animate attributeName="opacity" values="1;.35;1" dur="2.4s" repeatCount="indefinite"/></circle><text x="{70 + (i % 3) * 275}" y="{109 + (i // 3) * 48}" fill="{COLORS["text"]}" font-family="ui-monospace,monospace" font-size="11">{escape(label)}</text><text x="{270 + (i % 3) * 275}" y="{109 + (i // 3) * 48}" fill="{color}" font-family="ui-monospace,monospace" font-size="9" text-anchor="end">{escape(status)}</text>' for i, (label, status, color) in enumerate([("DSA", "PRACTICING", COLORS["cyan"]), ("Problem Solving", "ACTIVE", COLORS["purple"]), ("Advanced JavaScript", "EXPLORING", COLORS["pink"]), ("React Development", "PRACTICING", COLORS["green"]), ("Node.js", "EXPLORING", COLORS["cyan"]), ("REST APIs", "LEARNING", COLORS["purple"]), ("Database Design", "EXPLORING", COLORS["pink"]), ("Git & GitHub", "PRACTICING", COLORS["green"]), ("Software Engineering", "LEARNING", COLORS["cyan"])])) + "</svg>")
+    write("signals.svg", svg_start(900, 155, "Developer signal").replace("</svg>", "") + text(40, 43, "DEVELOPER SIGNAL", 20, COLORS["text"], "700") + "".join(f'<text x="{45 + i * 205}" y="92" fill="{color}" font-family="ui-monospace,monospace" font-size="11" font-weight="700">{escape(label)}</text><text x="{45 + i * 205}" y="116" fill="{COLORS["muted"]}" font-family="ui-monospace,monospace" font-size="10">{escape(value)}</text>' for i, (label, value, color) in enumerate([("BUILDING", "Web Development", COLORS["cyan"]), ("TRAINING", "G.R.I.L. @ NVIDIA", COLORS["green"]), ("PRACTICING", "DSA & Problem Solving", COLORS["purple"]), ("EXPLORING", "Backend & Databases", COLORS["pink"])])) + "</svg>")
 
 
 def fetch_data() -> tuple[dict, list, Counter, list, dict | None]:
@@ -171,9 +186,27 @@ def fetch_data() -> tuple[dict, list, Counter, list, dict | None]:
     return profile, repos, languages, events, {"searches": searches, "contributions": contributions}
 
 
+def generate_repository_radar(repos: list) -> None:
+    meaningful = [repo for repo in repos if not repo.get("fork") and not repo.get("archived")][:5]
+    height = 115 + max(len(meaningful), 1) * 34
+    body = svg_start(900, height, "Repository radar").replace("</svg>", "") + text(40, 42, "REPOSITORY RADAR", 20, COLORS["text"], "700") + text(40, 65, "Public repositories detected from the GitHub API.", 11, COLORS["muted"])
+    if not meaningful:
+        body += text(40, 108, "Repository radar is warming up — more builds coming online.", 13, COLORS["muted"])
+    for index, repo in enumerate(meaningful):
+        y = 99 + index * 34
+        name = repo.get("name", "Unnamed repository")
+        description = (repo.get("description") or "No description provided")[:62]
+        language = repo.get("language") or "Unspecified"
+        updated = (repo.get("updated_at") or "")[:10] or "Unknown"
+        body += f'<rect x="40" y="{y-19}" width="820" height="26" rx="6" fill="{COLORS["panel2"]}" stroke="#1A2A4A"/><text x="52" y="{y-2}" fill="{COLORS["cyan"]}" font-family="ui-monospace,monospace" font-size="11" font-weight="700">{escape(name)}</text><text x="220" y="{y-2}" fill="{COLORS["muted"]}" font-family="ui-monospace,monospace" font-size="10">{escape(description)}</text><text x="650" y="{y-2}" fill="{COLORS["purple"]}" font-family="ui-monospace,monospace" font-size="10">{escape(language)}</text><text x="840" y="{y-2}" fill="{COLORS["muted"]}" font-family="ui-monospace,monospace" font-size="10" text-anchor="end">★ {repo.get("stargazers_count", 0)} · {updated}</text>'
+    write("repository-radar.svg", body + "</svg>")
+
+
 def generate_dynamic(profile: dict, repos: list, languages: Counter, events: list, extra: dict) -> None:
+    generate_repository_radar(repos)
     searches = extra["searches"]
-    stats = [("PUBLIC REPOSITORIES", str(profile.get("public_repos", 0)), COLORS["cyan"]), ("FOLLOWERS", str(profile.get("followers", 0)), COLORS["purple"]), ("FOLLOWING", str(profile.get("following", 0)), COLORS["pink"]), ("PUBLIC STARS", str(sum(repo.get("stargazers_count", 0) for repo in repos)), COLORS["green"]), ("PULL REQUESTS", str(searches.get("pr", 0)), COLORS["cyan"]), ("ISSUES", str(searches.get("issue", 0)), COLORS["purple"])]
+    push_events = sum(1 for event in events if event.get("type") == "PushEvent")
+    stats = [("PUBLIC REPOSITORIES", str(profile.get("public_repos", 0)), COLORS["cyan"]), ("FOLLOWERS", str(profile.get("followers", 0)), COLORS["purple"]), ("FOLLOWING", str(profile.get("following", 0)), COLORS["pink"]), ("PUBLIC STARS", str(sum(repo.get("stargazers_count", 0) for repo in repos)), COLORS["green"]), ("PULL REQUESTS", str(searches.get("pr", 0)), COLORS["cyan"]), ("ISSUES", str(searches.get("issue", 0)), COLORS["purple"]), ("RECENT PUSH EVENTS", str(push_events), COLORS["pink"])]
     body = svg_start(900, 205, "GitHub telemetry").replace("</svg>", "") + text(40, 47, "GITHUB TELEMETRY", 21, COLORS["text"], "700") + text(40, 72, f"LIVE DATA / {USER}", 11, COLORS["muted"])
     for i, (label, value, color) in enumerate(stats):
         x, y = 40 + (i % 3) * 285, 105 + (i // 3) * 55
@@ -212,8 +245,8 @@ def generate_dynamic(profile: dict, repos: list, languages: Counter, events: lis
             level = 0 if count == 0 else min(4, 1 + count // 3)
             body += f'<rect x="{x}" y="{y}" width="10" height="10" rx="2" fill="{levels[level]}" aria-label="{escape(day.get("date", str(start)))}: {count} contributions"/>'
         write("contributions.svg", body + "</svg>")
-    elif not (ASSETS / "contributions.svg").exists():
-        write("contributions.svg", svg_start(900, 150, "Contribution data unavailable").replace("</svg>", "") + text(40, 55, "CONTRIBUTION UNIVERSE", 20, COLORS["text"], "700") + text(40, 95, "Contribution data will appear after the workflow receives a GitHub token.", 13, COLORS["muted"]) + "</svg>")
+    elif not (ASSETS / "contributions.svg").exists() or "Contribution data will appear after" in (ASSETS / "contributions.svg").read_text(encoding="utf-8"):
+        write("contributions.svg", svg_start(900, 150, "Contribution data unavailable").replace("</svg>", "") + text(40, 55, "CONTRIBUTION UNIVERSE", 20, COLORS["text"], "700") + text(40, 95, "Contribution telemetry will synchronize during the next profile update.", 13, COLORS["muted"]) + "</svg>")
 
 
 def main() -> int:
