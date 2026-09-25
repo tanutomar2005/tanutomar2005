@@ -2,103 +2,142 @@
 
 # TANU TOMAR
 
-`DEVELOPER CONTROL CENTER`  ·  `B.Tech CSE`
+### Full Stack Developer · B.Tech CSE Student · Problem Solver
 
-**Currently undergoing G.R.I.L. training at NVIDIA**
+Building practical software, learning in public, and turning complex problems into clear, useful products.
 
-<br>
+<p>
+	<a href="https://github.com/tanutomar2005">GitHub Profile</a>
+	·
+	<a href="https://github.com/tanutomar2005?tab=repositories">Explore Repositories</a>
+</p>
 
 <img src="./assets/hero.svg" alt="Tanu Tomar developer mission control" width="100%" />
 
 </div>
 
-## DEVELOPER PROFILE
+## DEVELOPER CONTROL CENTER
 
 <div align="center">
-<img src="./assets/profile.svg" alt="Tanu Tomar developer profile telemetry panel" width="100%" />
+<img src="./assets/profile.svg" alt="Tanu Tomar developer profile control center" width="100%" />
 </div>
 
-## CURRENT MISSION // 2026
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### ABOUT ME
+
+I am Tanu Tomar, a Computer Science and Engineering student at **ABES Institute of Technology, Ghaziabad**, focused on becoming a capable full stack developer.
+
+I enjoy building end-to-end web experiences, understanding how systems work behind the interface, and improving through consistent problem solving.
+
+</td>
+<td width="50%" valign="top">
+
+### CURRENT DIRECTION
+
+```text
+BUILD       full stack web products
+PRACTICE    data structures and algorithms
+STUDY       APIs, deployment, and architecture
+IMPROVE     one thoughtful iteration at a time
+```
+
+</td>
+</tr>
+</table>
+
+## TECHNOLOGY STACK
 
 <div align="center">
-<img src="./assets/mission.svg" alt="Current mission: G.R.I.L. training at NVIDIA with active learning signals" width="100%" />
+<img src="./assets/technology.svg" alt="Technology stack across programming, frontend, APIs, and developer tools" width="100%" />
 </div>
 
-## SKILL CLOCK
-
 <div align="center">
-<img src="./assets/skill-clock.svg" alt="Animated futuristic analog skill clock with 12 developer technology labels" width="100%" />
+
+`Python` · `JavaScript` · `React.js` · `HTML` · `CSS` · `Tailwind CSS`
+
+`Data Structures & Algorithms` · `Git` · `GitHub` · `REST APIs` · `VS Code`
+
 </div>
 
-## SKILL CONSTELLATION
+## SELECTED PROJECTS
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### CampusPool
+
+Campus-focused product project exploring how technology can make campus coordination more useful and accessible.
+
+</td>
+<td width="50%" valign="top">
+
+### [JanTrack](https://github.com/tanutomar2005/JanTrack)
+
+Transparent government complaint tracking from submission through verification, resolution, and citizen feedback.
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+### TenderX
+
+AI-assisted public procurement workflow for publishing tenders, evaluating submissions, and supporting accountable decisions.
+
+</td>
+<td width="50%" valign="top">
+
+### UptoSkills LMS
+
+Full stack learning platform with student, instructor, and admin experiences, supported by role-based access and REST APIs.
+
+</td>
+</tr>
+</table>
+
+<p align="center"><sub>Project repositories are linked when a verified public URL is available.</sub></p>
+
+## CURRENTLY LEARNING
 
 <div align="center">
-<img src="./assets/constellation.svg" alt="Skill constellation covering languages, frontend, backend, databases, computer science, and tools" width="100%" />
+<img src="./assets/learning.svg" alt="Current learning focus across DSA, full stack development, APIs, Docker, deployment, and software engineering" width="100%" />
 </div>
 
-## TECHNOLOGY UNIVERSE
-
 <div align="center">
-<img src="./assets/technology.svg" alt="Technology universe grouped by frontend, backend, database, and programming" width="100%" />
-</div>
 
-## LEARNING TRAJECTORY
+**DSA** · **Full Stack Development** · **REST APIs** · **Docker** · **Deployment** · **Real-world Software Development**
 
-<div align="center">
-<img src="./assets/trajectory.svg" alt="Learning trajectory from foundations through frontend, backend, databases, and engineering" width="100%" />
-</div>
-
-## CURRENT LEARNING // ACTIVE
-
-<div align="center">
-<img src="./assets/learning.svg" alt="Current learning topics with active, practicing, exploring, and learning status markers" width="100%" />
-</div>
-
-## DEVELOPER SIGNAL
-
-<div align="center">
-<img src="./assets/signals.svg" alt="Developer signal dashboard for building, training, practicing, and exploring" width="100%" />
-</div>
-
-## GITHUB TELEMETRY
-
-<div align="center">
-<img src="./assets/github-stats.svg" alt="Dynamically generated GitHub telemetry for repositories, followers, stars, pull requests, and issues" width="100%" />
-</div>
-
-## CONTRIBUTION UNIVERSE
-
-<div align="center">
-<img src="./assets/contributions.svg" alt="Dynamically generated GitHub contribution universe and activity heatmap" width="100%" />
-</div>
-
-## GITHUB ACTIVITY
-
-<div align="center">
-<img src="./assets/activity.svg" alt="Dynamically generated recent public GitHub activity" width="100%" />
-</div>
-
-## REPOSITORY RADAR
-
-<div align="center">
-<img src="./assets/repository-radar.svg" alt="Dynamically detected public repository radar with descriptions, languages, stars, and update dates" width="100%" />
-</div>
-
-## LANGUAGE TELEMETRY
-
-<div align="center">
-<img src="./assets/top-languages.svg" alt="Dynamically calculated language telemetry from public repositories" width="100%" />
 </div>
 
 ## DEVELOPER MINDSET
 
 > Learn with curiosity. Build with care. Debug with patience. Keep improving.
 
-## GITHUB / CONNECT
+I value fundamentals, readable code, honest iteration, and software that solves a real problem for a real person.
+
+## GITHUB TELEMETRY
+
+<div align="center">
+<img src="./assets/github-stats.svg" alt="GitHub statistics for tanutomar2005" width="100%" />
+</div>
+
+<div align="center">
+<img src="./assets/contributions.svg" alt="GitHub contribution activity for tanutomar2005" width="100%" />
+</div>
+
+<div align="center">
+<img src="./assets/top-languages.svg" alt="Top programming languages across Tanu Tomar's public repositories" width="100%" />
+</div>
+
+## LET'S CONNECT
 
 <div align="center">
 
-[![GitHub](https://img.shields.io/badge/GitHub-tanutomar2005-070B16?style=for-the-badge&logo=github&logoColor=00E5FF)](https://github.com/tanutomar2005)
+<a href="https://github.com/tanutomar2005"><img src="https://img.shields.io/badge/GitHub-tanutomar2005-111827?style=for-the-badge&logo=github&logoColor=white" alt="GitHub profile" /></a>
 
 </div>
 
