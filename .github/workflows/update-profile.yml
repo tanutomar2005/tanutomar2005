@@ -2,6 +2,8 @@ name: Update profile telemetry
 
 on:
   push:
+    branches:
+      - main
   workflow_dispatch:
   schedule:
     - cron: "17 */6 * * *"

@@ -112,39 +112,41 @@ A learning platform for students, instructors, and administrators, with role-bas
 </tr>
 </table>
 
-## 📊 GITHUB ANALYTICS
+## 📡 GITHUB ACTIVITY
 
 <div align="center">
-<sub>GitHub API snapshots · refreshed automatically every six hours</sub>
+<sub>Live GitHub API snapshots · refreshed automatically every six hours</sub>
 <br />
-<a href="https://github.com/tanutomar2005">Data source: github.com/tanutomar2005</a>
+<a href="https://github.com/tanutomar2005">DATA SOURCE / github.com/tanutomar2005</a>
 </div>
 
-<img src="./assets/github-stats.svg" alt="Automatically refreshed GitHub profile statistics for tanutomar2005, sourced from the GitHub API" width="100%" />
-
-<img src="./assets/top-languages.svg" alt="Top languages calculated from tanutomar2005 public repository language data" width="100%" />
+<div align="center">
+<table>
+<tr>
+<td width="50%" valign="top"><img src="./assets/github-stats.svg" alt="GitHub profile counters for tanutomar2005 from the GitHub API" width="100%" /></td>
+<td width="50%" valign="top"><img src="./assets/top-languages.svg" alt="Language breakdown calculated from tanutomar2005 public repositories" width="100%" /></td>
+</tr>
+</table>
+<img src="./assets/contributions.svg" alt="Contribution calendar generated from tanutomar2005 GitHub contribution data" width="100%" />
+</div>
 
 <img src="./assets/repository-radar.svg" alt="Recently updated public repositories and metadata for tanutomar2005" width="100%" />
 
-## 🔥 CONTRIBUTION ACTIVITY
-
-<div align="center">
-<sub>Public contribution graph → automated snake visualization → profile analytics</sub>
-<br />
-<a href="https://github.com/tanutomar2005">Open the GitHub profile contribution calendar</a>
-</div>
+<hr />
 
 ## 🐍 CONTRIBUTION SNAKE
 
 <div align="center">
+<sub>Real contribution activity, automatically generated from my GitHub contribution graph.</sub>
+<br /><br />
 <picture>
-<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/tanutomar2005/tanutomar2005/output/github-contribution-grid-snake-dark.svg" />
-<source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/tanutomar2005/tanutomar2005/output/github-contribution-grid-snake.svg" />
-<img alt="Animated snake traversing tanutomar2005's public GitHub contribution graph" src="https://raw.githubusercontent.com/tanutomar2005/tanutomar2005/output/github-contribution-grid-snake-dark.svg" width="100%" />
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/tanutomar2005/tanutomar2005/output/github-snake-dark.svg" />
+<source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/tanutomar2005/tanutomar2005/output/github-snake.svg" />
+<img alt="Tanu Tomar GitHub contribution snake" src="https://raw.githubusercontent.com/tanutomar2005/tanutomar2005/output/github-snake.svg" width="100%" />
 </picture>
 </div>
 
-<sub>Generated daily from the public contribution graph. New images appear after the workflow's first successful run.</sub>
+<sub>Generated daily from the public contribution graph. Images publish to the output branch after the first successful workflow run.</sub>
 
 ## ⚙️ TECHNOLOGY RADAR
 

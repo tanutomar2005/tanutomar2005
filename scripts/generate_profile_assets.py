@@ -185,14 +185,14 @@ def generate_static_assets() -> None:
 
 
 def generate_skill_panels() -> None:
-    categories = [("WEB DEVELOPMENT", "HTML · CSS · JavaScript · React", COLORS["cyan"]), ("BACKEND", "Node.js · Python · REST APIs", COLORS["purple"]), ("DATABASE", "SQL · PostgreSQL", COLORS["pink"]), ("PROGRAMMING", "Java · C Basics · Python", COLORS["green"]), ("COMPUTER SCIENCE", "DSA · Problem Solving", COLORS["cyan"]), ("TOOLS", "Git · GitHub", COLORS["purple"])]
+    categories = [("LANGUAGES", "Python · JavaScript", COLORS["cyan"]), ("FRONTEND", "React.js · HTML/CSS · Tailwind CSS", COLORS["purple"]), ("DEVELOPMENT", "REST APIs · Git · GitHub", COLORS["pink"]), ("DEPLOYMENT", "Docker", COLORS["green"]), ("PROBLEM SOLVING", "Data Structures & Algorithms", COLORS["cyan"]), ("TOOLS", "VS Code", COLORS["purple"])]
     body = svg_start(900, 285, "Technology universe").replace("</svg>", "") + text(40, 45, "TECHNOLOGY UNIVERSE", 20, COLORS["text"], "700") + text(40, 68, "Current tools and learning areas, without proficiency claims.", 11, COLORS["muted"])
     for i, (category, skills, color) in enumerate(categories):
         x = 40 + (i % 3) * 275
         y = 90 + (i // 3) * 88
         body += f'<rect x="{x}" y="{y}" width="245" height="66" rx="10" fill="{COLORS["panel2"]}" stroke="#1A2A4A"/><text x="{x + 15}" y="{y + 23}" fill="{color}" font-family="ui-monospace,monospace" font-size="10" font-weight="700">{category}</text><text x="{x + 15}" y="{y + 47}" fill="{COLORS["text"]}" font-family="ui-monospace,monospace" font-size="10">{escape(skills)}</text>'
     write("technology.svg", body + "</svg>")
-    learning = [("DSA", "PRACTICING", COLORS["cyan"]), ("Python", "LEARNING", COLORS["purple"]), ("Problem Solving", "PRACTICING", COLORS["pink"]), ("Advanced JavaScript", "EXPLORING", COLORS["green"]), ("React", "PRACTICING", COLORS["cyan"]), ("Node.js", "EXPLORING", COLORS["purple"]), ("SQL & PostgreSQL", "LEARNING", COLORS["pink"])]
+    learning = [("Data Structures & Algorithms", "PRACTICING", COLORS["cyan"]), ("Full Stack Development", "BUILDING", COLORS["purple"]), ("REST APIs", "LEARNING", COLORS["pink"]), ("Docker", "EXPLORING", COLORS["green"]), ("Deployment", "EXPLORING", COLORS["cyan"]), ("Real-World Software Development", "BUILDING", COLORS["purple"])]
     body = svg_start(900, 205, "Current learning active").replace("</svg>", "") + text(40, 43, "CURRENT LEARNING // ACTIVE", 20, COLORS["text"], "700") + text(40, 67, "Status signals show direction, not mastery.", 11, COLORS["muted"])
     for i, (skill, status, color) in enumerate(learning):
         x = 40 + (i % 3) * 275
@@ -226,7 +226,7 @@ def fetch_data() -> tuple[dict, list, Counter, list, dict | None]:
         try:
             searches[kind] = api(f"/search/issues?q={urllib.parse.quote(f'author:{USER} type:{kind}')}&per_page=1").get("total_count", 0)
         except RuntimeError:
-            searches[kind] = 0
+            searches[kind] = None
     contributions = None
     if TOKEN:
         query = "query($login:String!){user(login:$login){contributionsCollection{contributionCalendar{totalContributions weeks{contributionDays{contributionCount date} }}}}}"
@@ -257,8 +257,10 @@ def generate_dynamic(profile: dict, repos: list, languages: Counter, events: lis
     generate_repository_radar(repos)
     searches = extra["searches"]
     push_events = sum(1 for event in events if event.get("type") == "PushEvent")
-    stats = [("PUBLIC REPOSITORIES", str(profile.get("public_repos", 0)), COLORS["cyan"]), ("FOLLOWERS", str(profile.get("followers", 0)), COLORS["purple"]), ("FOLLOWING", str(profile.get("following", 0)), COLORS["pink"]), ("PUBLIC STARS", str(sum(repo.get("stargazers_count", 0) for repo in repos)), COLORS["green"]), ("PULL REQUESTS", str(searches.get("pr", 0)), COLORS["cyan"]), ("ISSUES", str(searches.get("issue", 0)), COLORS["purple"]), ("RECENT PUSH EVENTS", str(push_events), COLORS["pink"])]
-    body = svg_start(900, 205, "GitHub telemetry").replace("</svg>", "") + text(40, 47, "GITHUB TELEMETRY", 21, COLORS["text"], "700") + text(40, 72, f"LIVE DATA / {USER}", 11, COLORS["muted"])
+    stats = [("PUBLIC REPOSITORIES", str(profile.get("public_repos", 0)), COLORS["cyan"]), ("FOLLOWERS", str(profile.get("followers", 0)), COLORS["purple"]), ("FOLLOWING", str(profile.get("following", 0)), COLORS["pink"]), ("PUBLIC STARS", str(sum(repo.get("stargazers_count", 0) for repo in repos)), COLORS["green"]), ("RECENT PUSH EVENTS", str(push_events), COLORS["pink"])]
+    stats.extend((label, str(searches[kind]), color) for kind, label, color in (("pr", "PULL REQUESTS", COLORS["cyan"]), ("issue", "ISSUES", COLORS["purple"])) if searches.get(kind) is not None)
+    updated = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+    body = svg_start(900, 205, "GitHub telemetry").replace("</svg>", "") + text(40, 47, "GITHUB TELEMETRY", 21, COLORS["text"], "700") + text(40, 72, f"API SNAPSHOT / {USER} · {updated}", 11, COLORS["muted"])
     for i, (label, value, color) in enumerate(stats):
         x, y = 40 + (i % 3) * 285, 105 + (i // 3) * 55
         body += f'<rect x="{x}" y="{y-25}" width="250" height="42" rx="8" fill="{COLORS["panel2"]}" stroke="#1A2A4A"/><circle cx="{x+17}" cy="{y-4}" r="4" fill="{color}"/><text x="{x+30}" y="{y}" fill="{COLORS["muted"]}" font-family="ui-monospace,monospace" font-size="11">{label}</text><text x="{x+230}" y="{y}" fill="{COLORS["text"]}" font-family="ui-monospace,monospace" font-size="18" font-weight="700" text-anchor="end">{value}</text>'
@@ -284,7 +286,7 @@ def generate_dynamic(profile: dict, repos: list, languages: Counter, events: lis
         body += f'<circle cx="48" cy="{y-4}" r="3" fill="{palette[i % len(palette)]}"/>' + text(62, y, f"{kind} / {repo}", 11, COLORS["text"])
     write("activity.svg", body + "</svg>")
     contribution_data = (extra.get("contributions") or {}).get("data", {}).get("user", {}).get("contributionsCollection", {}).get("contributionCalendar")
-    if contribution_data:
+    if contribution_data and isinstance(contribution_data.get("totalContributions"), int) and isinstance(contribution_data.get("weeks"), list):
         days = [day for week in contribution_data.get("weeks", []) for day in week.get("contributionDays", [])]
         body = svg_start(900, 210, "GitHub contribution universe").replace("</svg>", "") + text(40, 43, "CONTRIBUTION UNIVERSE", 20, COLORS["text"], "700") + text(40, 67, f"{contribution_data.get('totalContributions', 0)} contributions in the last year", 11, COLORS["muted"])
         levels = ["#111A31", "#0B4960", "#087A86", COLORS["cyan"], COLORS["purple"]]
@@ -296,8 +298,8 @@ def generate_dynamic(profile: dict, repos: list, languages: Counter, events: lis
             level = 0 if count == 0 else min(4, 1 + count // 3)
             body += f'<rect x="{x}" y="{y}" width="10" height="10" rx="2" fill="{levels[level]}" aria-label="{escape(day.get("date", str(start)))}: {count} contributions"/>'
         write("contributions.svg", body + "</svg>")
-    elif not (ASSETS / "contributions.svg").exists() or "Contribution data will appear after" in (ASSETS / "contributions.svg").read_text(encoding="utf-8"):
-        write("contributions.svg", svg_start(900, 150, "Contribution data unavailable").replace("</svg>", "") + text(40, 55, "CONTRIBUTION UNIVERSE", 20, COLORS["text"], "700") + text(40, 95, "Contribution telemetry will synchronize during the next profile update.", 13, COLORS["muted"]) + "</svg>")
+    else:
+        write("contributions.svg", svg_start(900, 150, "Contribution data unavailable").replace("</svg>", "") + text(40, 55, "CONTRIBUTION UNIVERSE", 20, COLORS["text"], "700") + text(40, 95, "Current contribution data unavailable; no cached counts shown.", 13, COLORS["muted"]) + "</svg>")
 
 
 def main() -> int:
