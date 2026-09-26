@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="250" viewBox="0 0 640 250" role="img" aria-labelledby="title desc">
+<title id="title">UptoSkills LMS project card</title>
+<desc id="desc">A learning platform for students, instructors, and administrators, with role-based access and REST APIs. Stack: React, TypeScript, Node.js, Express, PostgreSQL.</desc>
+<defs>
+  <linearGradient id="card" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#081724"/><stop offset="1" stop-color="#03050B"/></linearGradient>
+  <linearGradient id="accent" x1="0" x2="1"><stop stop-color="#00E5FF"/><stop offset=".55" stop-color="#5B8CFF"/><stop offset="1" stop-color="#8B5CF6"/></linearGradient>
+  <filter id="glow" x="-30%" y="-100%" width="160%" height="300%"><feGaussianBlur stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<rect x="1" y="1" width="638" height="248" rx="17" fill="url(#card)" stroke="#1C3C58" stroke-width="1.5"/>
+<rect x="2" y="2" width="636" height="4" rx="2" fill="url(#accent)"/>
+<circle cx="31" cy="39" r="5" fill="#5B8CFF" filter="url(#glow)"/>
+<text x="48" y="47" fill="#F6F8FF" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="23" font-weight="700">UptoSkills LMS</text>
+<path d="M28 66H612" stroke="#1C3C58" stroke-width="1"/>
+<text x="28" y="99" fill="#C7D3E7" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="14">A learning platform for students, instructors, and</text>
+<text x="28" y="122" fill="#C7D3E7" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="14">administrators, with role-based access and REST APIs.</text>
+<text x="28" y="164" fill="#78DDF2" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="10" font-weight="700" letter-spacing="1">STACK</text>
+<rect x="28" y="178" width="76" height="30" rx="15" fill="#07121D" stroke="#17617B"/><text x="66" y="198" text-anchor="middle" fill="#C6F5FC" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="11">React</text>
+<rect x="112" y="178" width="106" height="30" rx="15" fill="#07121D" stroke="#17617B"/><text x="165" y="198" text-anchor="middle" fill="#C6F5FC" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="11">TypeScript</text>
+<rect x="226" y="178" width="88" height="30" rx="15" fill="#07121D" stroke="#17617B"/><text x="270" y="198" text-anchor="middle" fill="#C6F5FC" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="11">Node.js</text>
+<rect x="322" y="178" width="83" height="30" rx="15" fill="#07121D" stroke="#17617B"/><text x="363.5" y="198" text-anchor="middle" fill="#C6F5FC" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="11">Express</text>
+<rect x="413" y="178" width="105" height="30" rx="15" fill="#07121D" stroke="#17617B"/><text x="465.5" y="198" text-anchor="middle" fill="#C6F5FC" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="11">PostgreSQL</text>
+</svg>
