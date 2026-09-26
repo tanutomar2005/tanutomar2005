@@ -10,7 +10,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 from collections import Counter
-from datetime import datetime, timedelta, timezone
+from datetime import date, datetime, timedelta, timezone
 from html import escape
 from pathlib import Path
 
@@ -201,40 +201,76 @@ def generate_skill_panels() -> None:
     write("learning.svg", body + "</svg>")
 
 
-def fetch_data() -> tuple[dict, list, Counter, list, dict | None]:
+def fetch_data() -> tuple[dict, list, dict]:
+    if not TOKEN:
+        raise RuntimeError("GITHUB_TOKEN is required for live GitHub analytics generation.")
+
     profile = api(f"/users/{urllib.parse.quote(USER)}")
+    if not isinstance(profile, dict):
+        raise RuntimeError("GitHub returned an invalid profile response")
+    if profile.get("login", "").lower() != USER.lower():
+        raise RuntimeError(f"GitHub returned a different account than {USER}")
+
     repos = []
     page = 1
-    while page <= 10:
+    while True:
         batch = api(f"/users/{urllib.parse.quote(USER)}/repos?per_page=100&page={page}&type=owner&sort=updated")
+        if not isinstance(batch, list):
+            raise RuntimeError("GitHub returned an invalid repository response")
         repos.extend(batch)
         if len(batch) < 100:
             break
         page += 1
-    languages: Counter[str] = Counter()
+    repos = [repo for repo in repos if repo.get("private") is False]
+
+    now = datetime.now(timezone.utc).replace(microsecond=0)
+    start = now - timedelta(days=365)
+    query = """query($login:String!, $from:DateTime!, $to:DateTime!) {
+      user(login:$login) {
+        contributionsCollection(from:$from, to:$to) {
+          totalCommitContributions
+          totalPullRequestContributions
+          totalIssueContributions
+          totalRepositoryContributions
+          contributionCalendar {
+            totalContributions
+            weeks { contributionDays { contributionCount date } }
+          }
+        }
+      }
+    }"""
+    response = api("/graphql", method="POST", body={
+        "query": query,
+        "variables": {
+            "login": USER,
+            "from": start.isoformat().replace("+00:00", "Z"),
+            "to": now.isoformat().replace("+00:00", "Z"),
+        },
+    })
+    if not isinstance(response, dict):
+        raise RuntimeError("GitHub returned an invalid GraphQL response")
+    if response.get("errors"):
+        raise RuntimeError(f"GitHub GraphQL returned errors: {response['errors']}")
+    data = response.get("data")
+    user_data = data.get("user") if isinstance(data, dict) else None
+    contributions = user_data.get("contributionsCollection") if isinstance(user_data, dict) else None
+    calendar = contributions.get("contributionCalendar") if contributions else None
+    if not contributions or not isinstance(calendar, dict) or not isinstance(calendar.get("weeks"), list):
+        raise RuntimeError("GitHub did not return the rolling-year contribution calendar")
+
+    language_repos: Counter[str] = Counter()
+    language_bytes: Counter[str] = Counter()
     for repo in repos:
-        if repo.get("fork"):
+        if repo.get("private") is not False or repo.get("fork") or not repo.get("full_name") or not repo.get("language"):
             continue
-        try:
-            for language, amount in api(f"/repos/{repo['full_name']}/languages").items():
-                languages[language] += amount
-        except RuntimeError as error:
-            print(f"warning: language data skipped for {repo.get('name')}: {error}")
-    events = api(f"/users/{urllib.parse.quote(USER)}/events/public?per_page=12")
-    searches = {}
-    for kind in ("pr", "issue"):
-        try:
-            searches[kind] = api(f"/search/issues?q={urllib.parse.quote(f'author:{USER} type:{kind}')}&per_page=1").get("total_count", 0)
-        except RuntimeError:
-            searches[kind] = None
-    contributions = None
-    if TOKEN:
-        query = "query($login:String!){user(login:$login){contributionsCollection{contributionCalendar{totalContributions weeks{contributionDays{contributionCount date} }}}}}"
-        try:
-            contributions = api("/graphql", method="POST", body={"query": query, "variables": {"login": USER}})
-        except RuntimeError as error:
-            print(f"warning: contributions unavailable: {error}")
-    return profile, repos, languages, events, {"searches": searches, "contributions": contributions}
+        languages = api(f"/repos/{repo['full_name']}/languages")
+        if not isinstance(languages, dict):
+            raise RuntimeError(f"GitHub returned invalid language data for {repo['full_name']}")
+        measured_languages = {name: size for name, size in languages.items() if isinstance(size, int) and size > 0}
+        language_repos.update(measured_languages.keys())
+        language_bytes.update(measured_languages)
+
+    return profile, repos, {"contributions": contributions, "language_repos": language_repos, "language_bytes": language_bytes, "window_start": start, "window_end": now}
 
 
 def generate_repository_radar(repos: list) -> None:
@@ -253,67 +289,208 @@ def generate_repository_radar(repos: list) -> None:
     write("repository-radar.svg", body + "</svg>")
 
 
-def generate_dynamic(profile: dict, repos: list, languages: Counter, events: list, extra: dict) -> None:
-    generate_repository_radar(repos)
-    searches = extra["searches"]
-    push_events = sum(1 for event in events if event.get("type") == "PushEvent")
-    stats = [("PUBLIC REPOSITORIES", str(profile.get("public_repos", 0)), COLORS["cyan"]), ("FOLLOWERS", str(profile.get("followers", 0)), COLORS["purple"]), ("FOLLOWING", str(profile.get("following", 0)), COLORS["pink"]), ("PUBLIC STARS", str(sum(repo.get("stargazers_count", 0) for repo in repos)), COLORS["green"]), ("RECENT PUSH EVENTS", str(push_events), COLORS["pink"])]
-    stats.extend((label, str(searches[kind]), color) for kind, label, color in (("pr", "PULL REQUESTS", COLORS["cyan"]), ("issue", "ISSUES", COLORS["purple"])) if searches.get(kind) is not None)
-    updated = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
-    body = svg_start(900, 205, "GitHub telemetry").replace("</svg>", "") + text(40, 47, "GITHUB TELEMETRY", 21, COLORS["text"], "700") + text(40, 72, f"API SNAPSHOT / {USER} · {updated}", 11, COLORS["muted"])
-    for i, (label, value, color) in enumerate(stats):
-        x, y = 40 + (i % 3) * 285, 105 + (i // 3) * 55
-        body += f'<rect x="{x}" y="{y-25}" width="250" height="42" rx="8" fill="{COLORS["panel2"]}" stroke="#1A2A4A"/><circle cx="{x+17}" cy="{y-4}" r="4" fill="{color}"/><text x="{x+30}" y="{y}" fill="{COLORS["muted"]}" font-family="ui-monospace,monospace" font-size="11">{label}</text><text x="{x+230}" y="{y}" fill="{COLORS["text"]}" font-family="ui-monospace,monospace" font-size="18" font-weight="700" text-anchor="end">{value}</text>'
+def contribution_data(contributions: dict) -> tuple[dict, list[tuple[date, int]]]:
+    calendar = contributions.get("contributionCalendar")
+    if not isinstance(calendar, dict):
+        raise RuntimeError("Contribution calendar data is missing")
+    days = []
+    for week in calendar.get("weeks", []):
+        for item in week.get("contributionDays", []):
+            try:
+                days.append((date.fromisoformat(item["date"]), int(item["contributionCount"])))
+            except (KeyError, TypeError, ValueError):
+                raise RuntimeError("GitHub returned an invalid contribution day")
+    if not days or not isinstance(calendar.get("totalContributions"), int):
+        raise RuntimeError("GitHub returned an empty or invalid contribution calendar")
+    days.sort()
+    return calendar, days
+
+
+def generate_activity_card(profile: dict, repos: list, contributions: dict, window_start: datetime, window_end: datetime) -> None:
+    calendar, days = contribution_data(contributions)
+    month_totals: Counter[str] = Counter()
+    for day, count in days:
+        if window_start.date() <= day <= window_end.date():
+            month_totals[day.strftime("%Y-%m")] += count
+
+    end_month = window_end.date().replace(day=1)
+    months = []
+    for offset in range(11, -1, -1):
+        month_index = end_month.year * 12 + end_month.month - 1 - offset
+        months.append(f"{month_index // 12:04d}-{month_index % 12 + 1:02d}")
+    values = [month_totals[month] for month in months]
+    stars = sum(repo.get("stargazers_count", 0) for repo in repos if isinstance(repo.get("stargazers_count"), int))
+
+    body = svg_start(1200, 350, f"GitHub contribution activity for {USER}").replace("</svg>", "")
+    body += text(38, 42, "MY GITHUB PROFILE", 18, COLORS["text"], "700")
+    body += text(38, 80, USER, 25, COLORS["cyan"], "700")
+    body += '<path d="M430 28V322" stroke="#1A2A4A" stroke-width="1"/>'
+    profile_rows = [
+        ("CONTRIBUTIONS / LAST 12 MONTHS", calendar["totalContributions"], COLORS["purple"]),
+        ("PUBLIC REPOSITORIES", profile.get("public_repos"), COLORS["cyan"]),
+        ("STARS ON PUBLIC REPOSITORIES", stars, COLORS["green"]),
+        ("JOINED GITHUB", profile.get("created_at", "")[:10], COLORS["pink"]),
+    ]
+    y = 127
+    for label, value, accent in profile_rows:
+        if not isinstance(value, (int, str)) or not value:
+            continue
+        body += f'<circle cx="48" cy="{y - 5}" r="4" fill="{accent}"/><text x="63" y="{y}" fill="{COLORS["muted"]}" font-family="ui-monospace,monospace" font-size="10">{escape(label)}</text><text x="63" y="{y + 20}" fill="{COLORS["text"]}" font-family="ui-monospace,monospace" font-size="15" font-weight="700">{escape(str(value))}</text>'
+        y += 49
+
+    body += text(465, 42, "contributions in the last year", 16, COLORS["text"], "700")
+    body += text(465, 63, f"{window_start.date().isoformat()} TO {window_end.date().isoformat()} / MONTHLY TOTALS", 9, COLORS["muted"])
+    chart_left, chart_right = 520, 1162
+    chart_top, chart_bottom = 94, 282
+    max_value = max(values, default=0)
+    tick = max(1, math.ceil(max_value / 4))
+    ceiling = tick * 4
+    for tick_index in range(5):
+        y_pos = chart_bottom - (chart_bottom - chart_top) * tick_index / 4
+        body += f'<path d="M{chart_left} {y_pos:.1f}H{chart_right}" stroke="#1A2A4A" stroke-width="1"/><text x="{chart_left - 11}" y="{y_pos + 4:.1f}" text-anchor="end" fill="{COLORS["cyan"]}" font-family="ui-monospace,monospace" font-size="9">{tick * tick_index}</text>'
+
+    points = []
+    for index, (month, value) in enumerate(zip(months, values)):
+        x = chart_left + (chart_right - chart_left) * index / (len(months) - 1)
+        y_pos = chart_bottom - (chart_bottom - chart_top) * value / ceiling
+        points.append((x, y_pos))
+        body += f'<text x="{x:.1f}" y="{chart_bottom + 20}" text-anchor="middle" fill="{COLORS["cyan"]}" font-family="ui-monospace,monospace" font-size="9">{date.fromisoformat(month + "-01").strftime("%b")}</text>'
+
+    line_path = f"M{points[0][0]:.1f},{points[0][1]:.1f}"
+    for (start_x, start_y), (end_x, end_y) in zip(points, points[1:]):
+        dx = end_x - start_x
+        line_path += f" C{start_x + dx * 0.4:.1f},{start_y:.1f} {end_x - dx * 0.4:.1f},{end_y:.1f} {end_x:.1f},{end_y:.1f}"
+    area_path = f"M{points[0][0]:.1f},{chart_bottom} L{points[0][0]:.1f},{points[0][1]:.1f}{line_path[len(f'M{points[0][0]:.1f},{points[0][1]:.1f}'):]} L{points[-1][0]:.1f},{chart_bottom} Z"
+    body += f'<path d="{area_path}" fill="{COLORS["purple"]}" opacity=".48"/><path d="{line_path}" fill="none" stroke="{COLORS["cyan"]}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>'
+    for x, y_pos in points:
+        body += f'<circle cx="{x:.1f}" cy="{y_pos:.1f}" r="3" fill="{COLORS["cyan"]}" stroke="{COLORS["bg"]}" stroke-width="1"/>'
+    write("github-activity.svg", body + "</svg>")
+
+
+def generate_language_donut(filename: str, title: str, subtitle: str, data: Counter, unit: str) -> None:
+    body = svg_start(600, 330, title).replace("</svg>", "")
+    body += text(28, 40, title.upper(), 16, COLORS["text"], "700")
+    body += text(28, 61, subtitle, 9, COLORS["muted"])
+    ranked = data.most_common(5)
+    total = sum(data.values())
+    if not ranked or total == 0:
+        raise RuntimeError(f"GitHub returned no language data for {title}")
+    rows = list(ranked)
+    remainder = total - sum(value for _, value in ranked)
+    if remainder:
+        rows.append(("Other", remainder))
+    colors = [COLORS["cyan"], COLORS["purple"], COLORS["pink"], COLORS["green"], "#5B8CFF", "#A9B5D0"]
+    circumference = 2 * math.pi * 57
+    body += f'<circle cx="155" cy="185" r="57" fill="none" stroke="#172342" stroke-width="18"/>'
+    offset = 0.0
+    for index, (language, value) in enumerate(rows):
+        segment = circumference * value / total
+        body += f'<circle cx="155" cy="185" r="57" fill="none" stroke="{colors[index % len(colors)]}" stroke-width="18" stroke-dasharray="{segment:.2f} {circumference:.2f}" stroke-dashoffset="{-offset:.2f}" transform="rotate(-90 155 185)"/>'
+        offset += segment
+        y = 126 + index * 36
+        percentage = value / total * 100
+        body += f'<circle cx="270" cy="{y - 4}" r="4" fill="{colors[index % len(colors)]}"/><text x="284" y="{y}" fill="{COLORS["text"]}" font-family="ui-monospace,monospace" font-size="11">{escape(language)}</text><text x="558" y="{y}" text-anchor="end" fill="{COLORS["muted"]}" font-family="ui-monospace,monospace" font-size="10">{value:,} {escape(unit)} · {percentage:.1f}%</text>'
+    body += text(155, 181, str(len(rows)), 20, COLORS["text"], "700", "middle")
+    body += text(155, 199, "LANGUAGES", 8, COLORS["muted"], "400", "middle")
+    write(filename, body + "</svg>")
+
+
+def generate_stats_card(repos: list, contributions: dict) -> None:
+    stats = [
+        ("TOTAL STARS", sum(repo.get("stargazers_count", 0) for repo in repos), COLORS["green"]),
+        ("COMMITS / LAST 12 MONTHS", contributions.get("totalCommitContributions"), COLORS["cyan"]),
+        ("PULL REQUESTS / LAST 12 MONTHS", contributions.get("totalPullRequestContributions"), COLORS["purple"]),
+        ("ISSUES / LAST 12 MONTHS", contributions.get("totalIssueContributions"), COLORS["pink"]),
+        ("REPOSITORIES CONTRIBUTED TO", contributions.get("totalRepositoryContributions"), COLORS["green"]),
+    ]
+    stats = [(label, value, color) for label, value, color in stats if isinstance(value, int) and value >= 0]
+    body = svg_start(600, 330, "GitHub stats").replace("</svg>", "")
+    body += text(28, 40, "STATS", 16, COLORS["text"], "700")
+    body += text(28, 61, f"{USER} / LAST 12 MONTHS WHERE SHOWN", 9, COLORS["muted"])
+    for index, (label, value, accent) in enumerate(stats):
+        y = 82 + index * 46
+        body += f'<rect x="28" y="{y}" width="544" height="36" rx="7" fill="{COLORS["panel2"]}" stroke="#1A2A4A"/><circle cx="47" cy="{y + 18}" r="4" fill="{accent}"/><text x="62" y="{y + 22}" fill="{COLORS["text"]}" font-family="ui-monospace,monospace" font-size="10">{label}</text><text x="550" y="{y + 23}" text-anchor="end" fill="{COLORS["text"]}" font-family="ui-monospace,monospace" font-size="14" font-weight="700">{value:,}</text>'
     write("github-stats.svg", body + "</svg>")
-    total = sum(languages.values()) or 1
-    language_rows = languages.most_common(6)
-    body = svg_start(900, max(150, 72 + len(language_rows) * 25), "Top languages from public repositories").replace("</svg>", "") + text(40, 45, "LANGUAGE UNIVERSE", 20, COLORS["text"], "700") + text(40, 68, "Calculated from detected repository language bytes.", 11, COLORS["muted"])
-    palette = [COLORS["cyan"], COLORS["purple"], COLORS["pink"], COLORS["green"]]
-    if not language_rows:
-        body += text(40, 110, "No public repository language data detected yet.", 13, COLORS["muted"])
-    for i, (language, amount) in enumerate(language_rows):
-        y = 98 + i * 25
-        width = round(510 * amount / total)
-        body += text(40, y + 11, language, 12, COLORS["text"], "700") + f'<rect x="175" y="{y}" width="510" height="12" rx="6" fill="#111A31"/><rect x="175" y="{y}" width="{max(width, 3)}" height="12" rx="6" fill="{palette[i % len(palette)]}"/><text x="710" y="{y+11}" fill="{COLORS["muted"]}" font-family="ui-monospace,monospace" font-size="11">{amount / total:.1%}</text>'
-    write("top-languages.svg", body + "</svg>")
-    body = svg_start(900, 205, "Recent GitHub activity").replace("</svg>", "") + text(40, 45, "GITHUB ACTIVITY", 20, COLORS["text"], "700") + text(40, 68, "Recent public events from the GitHub activity stream.", 11, COLORS["muted"])
-    if not events:
-        body += text(40, 110, "No recent public activity returned.", 13, COLORS["muted"])
-    for i, event in enumerate(events[:5]):
-        y = 96 + i * 20
-        kind = event.get("type", "Activity").replace("Event", "")
-        repo = event.get("repo", {}).get("name", "unknown repository")
-        body += f'<circle cx="48" cy="{y-4}" r="3" fill="{palette[i % len(palette)]}"/>' + text(62, y, f"{kind} / {repo}", 11, COLORS["text"])
-    write("activity.svg", body + "</svg>")
-    contribution_data = (extra.get("contributions") or {}).get("data", {}).get("user", {}).get("contributionsCollection", {}).get("contributionCalendar")
-    if contribution_data and isinstance(contribution_data.get("totalContributions"), int) and isinstance(contribution_data.get("weeks"), list):
-        days = [day for week in contribution_data.get("weeks", []) for day in week.get("contributionDays", [])]
-        body = svg_start(900, 210, "GitHub contribution universe").replace("</svg>", "") + text(40, 43, "CONTRIBUTION UNIVERSE", 20, COLORS["text"], "700") + text(40, 67, f"{contribution_data.get('totalContributions', 0)} contributions in the last year", 11, COLORS["muted"])
-        levels = ["#111A31", "#0B4960", "#087A86", COLORS["cyan"], COLORS["purple"]]
-        start = datetime.now(timezone.utc).date() - timedelta(days=364)
-        for index, day in enumerate(days[-371:]):
-            x = 40 + (index % 53) * 15
-            y = 88 + (index // 53) * 15
-            count = day.get("contributionCount", 0)
-            level = 0 if count == 0 else min(4, 1 + count // 3)
-            body += f'<rect x="{x}" y="{y}" width="10" height="10" rx="2" fill="{levels[level]}" aria-label="{escape(day.get("date", str(start)))}: {count} contributions"/>'
-        write("contributions.svg", body + "</svg>")
-    else:
-        write("contributions.svg", svg_start(900, 150, "Contribution data unavailable").replace("</svg>", "") + text(40, 55, "CONTRIBUTION UNIVERSE", 20, COLORS["text"], "700") + text(40, 95, "Current contribution data unavailable; no cached counts shown.", 13, COLORS["muted"]) + "</svg>")
+
+
+def generate_contributions_bar(contributions: dict, window_start: datetime, window_end: datetime) -> None:
+    calendar, days = contribution_data(contributions)
+    month_totals: Counter[str] = Counter()
+    for day, count in days:
+        if window_start.date() <= day <= window_end.date():
+            month_totals[day.strftime("%Y-%m")] += count
+    end_month = window_end.date().replace(day=1)
+    months = []
+    for offset in range(11, -1, -1):
+        month_index = end_month.year * 12 + end_month.month - 1 - offset
+        months.append(f"{month_index // 12:04d}-{month_index % 12 + 1:02d}")
+    values = [month_totals[month] for month in months]
+
+    body = svg_start(600, 330, "Monthly Contributions").replace("</svg>", "")
+    body += text(28, 40, "MONTHLY CONTRIBUTIONS", 16, COLORS["text"], "700")
+    body += text(28, 61, "ROLLING 12-MONTH CONTRIBUTION CALENDAR / NOT HOURLY DATA", 8, COLORS["muted"])
+    chart_left, chart_right = 58, 575
+    chart_top, chart_bottom = 96, 260
+    max_value = max(values, default=0)
+    tick = max(1, math.ceil(max_value / 3))
+    ceiling = tick * 3
+    for tick_index in range(4):
+        value = tick * tick_index
+        y_pos = chart_bottom - (chart_bottom - chart_top) * tick_index / 3
+        body += f'<path d="M{chart_left} {y_pos:.1f}H{chart_right}" stroke="#1A2A4A"/><text x="{chart_left - 9}" y="{y_pos + 3:.1f}" text-anchor="end" fill="{COLORS["cyan"]}" font-family="ui-monospace,monospace" font-size="8">{value}</text>'
+    colors = [COLORS["cyan"], COLORS["purple"], COLORS["pink"], COLORS["green"]]
+    slot = (chart_right - chart_left) / len(values)
+    bar_width = min(25, slot * 0.58)
+    for index, (month, value) in enumerate(zip(months, values)):
+        height = (chart_bottom - chart_top) * value / ceiling
+        x = chart_left + index * slot + (slot - bar_width) / 2
+        body += f'<rect x="{x:.1f}" y="{chart_bottom - height:.1f}" width="{bar_width:.1f}" height="{height:.1f}" rx="3" fill="{colors[index % len(colors)]}"/>'
+        body += f'<text x="{x + bar_width / 2:.1f}" y="280" text-anchor="middle" fill="{COLORS["muted"]}" font-family="ui-monospace,monospace" font-size="8">{date.fromisoformat(month + "-01").strftime("%b")}</text>'
+    write("github-commits-hourly.svg", body + "</svg>")
+
+
+def generate_pulse() -> None:
+    updated = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+    body = svg_start(900, 110, "GitHub pulse").replace("</svg>", "")
+    body += text(35, 43, "PROFILE DATA SYNC", 18, COLORS["text"], "700")
+    body += text(35, 70, f"GITHUB API / {USER} / REFRESHED {updated}", 10, COLORS["muted"])
+    body += '<circle cx="858" cy="53" r="7" fill="#76B900"><animate attributeName="opacity" values="1;.35;1" dur="2.5s" repeatCount="indefinite"/></circle>'
+    write("github-pulse.svg", body + "</svg>")
+
+
+def generate_dynamic(profile: dict, repos: list, extra: dict) -> None:
+    repo_languages = extra["language_repos"]
+    language_bytes = extra["language_bytes"]
+    if not repo_languages:
+        raise RuntimeError("GitHub returned no public repository language data")
+    if not language_bytes:
+        raise RuntimeError("GitHub returned no public repository language byte data")
+
+    generate_repository_radar(repos)
+    generate_pulse()
+    contributions = extra["contributions"]
+    generate_activity_card(profile, repos, contributions, extra["window_start"], extra["window_end"])
+    generate_language_donut("github-languages-repo.svg", "Top Languages by Repo", "LANGUAGES PRESENT / NON-FORK PUBLIC REPOSITORIES", repo_languages, "repos")
+    generate_language_donut("github-languages-commit.svg", "Top Languages by Code", "LANGUAGE BY BYTES / NON-FORK PUBLIC REPOSITORIES", language_bytes, "bytes")
+    generate_stats_card(repos, contributions)
+    generate_contributions_bar(contributions, extra["window_start"], extra["window_end"])
 
 
 def main() -> int:
+    if not TOKEN:
+        print("GITHUB_TOKEN is required for live GitHub analytics generation.", file=sys.stderr)
+        return 1
+    try:
+        profile, repos, extra = fetch_data()
+    except RuntimeError as error:
+        print(f"error: analytics data was not refreshed; previous SVGs are unchanged: {error}", file=sys.stderr)
+        return 1
     ASSETS.mkdir(exist_ok=True)
     generate_clock_precise()
     generate_clock_gif()
     generate_static_assets()
     generate_skill_panels()
-    try:
-        profile, repos, languages, events, extra = fetch_data()
-        generate_dynamic(profile, repos, languages, events, extra)
-    except RuntimeError as error:
-        print(f"warning: dynamic assets kept from previous run: {error}")
-        return 0
+    generate_dynamic(profile, repos, extra)
     print(f"generated profile assets for {USER}")
     return 0
 

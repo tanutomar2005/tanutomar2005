@@ -1,0 +1,62 @@
+name: GitHub Analytics
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - "assets/*.svg"
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: github-analytics
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out profile repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install image fallback dependency
+        run: python -m pip install --disable-pip-version-check --no-input Pillow
+
+      - name: Generate analytics from GitHub API
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_USERNAME: tanutomar2005
+        run: python scripts/generate_profile_assets.py
+
+      - name: Verify all five analytics SVGs exist
+        run: |
+          test -f assets/github-activity.svg
+          test -f assets/github-languages-repo.svg
+          test -f assets/github-languages-commit.svg
+          test -f assets/github-stats.svg
+          test -f assets/github-commits-hourly.svg
+
+      - name: Validate generated analytics SVGs and README paths
+        run: python scripts/validate_github_analytics.py
+
+      - name: Commit refreshed SVG assets
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/github-activity.svg assets/github-languages-repo.svg assets/github-languages-commit.svg assets/github-stats.svg assets/github-commits-hourly.svg
+          if git diff --cached --quiet; then
+            echo "No analytics changes detected."
+          else
+            git commit -m "chore: refresh GitHub analytics [skip ci]"
+            git push
+          fi

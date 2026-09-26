@@ -1,0 +1,156 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="340" viewBox="0 0 1000 340" role="img" aria-labelledby="title desc">
+<title id="title">My Skills - Skills That Build My Future</title>
+<desc id="desc">A futuristic laptop workspace connected to Python, React, JavaScript, HTML, CSS, Git, GitHub, DSA, VS Code, and MySQL skill nodes.</desc>
+<defs>
+  <linearGradient id="frame" x1="0" y1="0" x2="1000" y2="0" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#00E5FF"/>
+    <stop offset=".48" stop-color="#4678FF"/>
+    <stop offset="1" stop-color="#8B5CF6"/>
+    <animate attributeName="x1" values="0;700;0" dur="18s" repeatCount="indefinite"/>
+    <animate attributeName="x2" values="1000;1700;1000" dur="18s" repeatCount="indefinite"/>
+  </linearGradient>
+  <linearGradient id="screen-edge" x1="0" y1="0" x2="1" y2="1">
+    <stop stop-color="#00E5FF" stop-opacity=".8"/>
+    <stop offset="1" stop-color="#8B5CF6" stop-opacity=".65"/>
+  </linearGradient>
+  <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+    <feGaussianBlur stdDeviation="3" result="blur"/>
+    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+</defs>
+
+<rect x="2" y="2" width="996" height="336" rx="18" fill="#050914" stroke="url(#frame)" stroke-width="2"/>
+<rect x="10" y="10" width="980" height="320" rx="13" fill="none" stroke="#172342"/>
+<path d="M30 66h940" stroke="#172342"/>
+<text x="500" y="44" text-anchor="middle" fill="#E8F2FF" font-family="Consolas,monospace" font-size="19" font-weight="700">Skills That Build My Future ♡</text>
+<circle cx="34" cy="39" r="3" fill="#00E5FF" filter="url(#glow)">
+  <animate attributeName="opacity" values=".35;1;.35" dur="3.2s" repeatCount="indefinite"/>
+</circle>
+<circle cx="966" cy="39" r="3" fill="#8B5CF6" filter="url(#glow)">
+  <animate attributeName="opacity" values="1;.3;1" dur="3.8s" repeatCount="indefinite"/>
+</circle>
+
+<!-- Quiet circuit traces behind the skill nodes and laptop. -->
+<g fill="none" stroke="#17405D" stroke-width="1.2" opacity=".8">
+  <path d="M247 111H280V143H322"/>
+  <path d="M247 161H290V164H322"/>
+  <path d="M247 211H280V184H322"/>
+  <path d="M247 261H291V205H322"/>
+  <path d="M678 143H718V103H753"/>
+  <path d="M678 157H733V143H753"/>
+  <path d="M678 171H725V183H753"/>
+  <path d="M678 185H737V223H753"/>
+  <path d="M678 199H724V263H753"/>
+  <path d="M678 211H716V303H753"/>
+</g>
+<g fill="#00E5FF" filter="url(#glow)">
+  <circle cx="280" cy="111" r="2"><animate attributeName="opacity" values=".2;1;.2" dur="2.8s" repeatCount="indefinite"/></circle>
+  <circle cx="290" cy="161" r="2"><animate attributeName="opacity" values="1;.25;1" dur="3.3s" repeatCount="indefinite"/></circle>
+  <circle cx="718" cy="103" r="2"><animate attributeName="opacity" values=".2;1;.2" dur="3.1s" repeatCount="indefinite"/></circle>
+  <circle cx="737" cy="223" r="2"><animate attributeName="opacity" values="1;.25;1" dur="2.6s" repeatCount="indefinite"/></circle>
+</g>
+
+<!-- Left-side technologies. -->
+<g font-family="Consolas,monospace">
+  <g>
+    <rect x="30" y="94" width="217" height="34" rx="8" fill="#091322" stroke="#17405D"/>
+    <rect x="40" y="100" width="29" height="22" rx="5" fill="#14243A"/>
+    <text x="54.5" y="115" text-anchor="middle" fill="#FFD45C" font-size="10" font-weight="700">Py</text>
+    <text x="79" y="116" fill="#D9E7F7" font-size="18">Python</text>
+    <circle cx="239" cy="111" r="3" fill="#00E5FF" filter="url(#glow)"><animate attributeName="opacity" values=".45;1;.45" dur="2.7s" repeatCount="indefinite"/></circle>
+  </g>
+  <g>
+    <rect x="30" y="144" width="217" height="34" rx="8" fill="#091322" stroke="#17405D"/>
+    <rect x="40" y="150" width="29" height="22" rx="5" fill="#14243A"/>
+    <text x="54.5" y="165" text-anchor="middle" fill="#F7D34A" font-size="9" font-weight="700">JS</text>
+    <text x="79" y="166" fill="#D9E7F7" font-size="18">JavaScript</text>
+    <circle cx="239" cy="161" r="3" fill="#00E5FF" filter="url(#glow)"><animate attributeName="opacity" values="1;.4;1" dur="3.1s" repeatCount="indefinite"/></circle>
+  </g>
+  <g>
+    <rect x="30" y="194" width="217" height="34" rx="8" fill="#091322" stroke="#17405D"/>
+    <rect x="40" y="200" width="29" height="22" rx="5" fill="#14243A"/>
+    <text x="54.5" y="215" text-anchor="middle" fill="#FF9B67" font-size="9" font-weight="700">&lt;/&gt;</text>
+    <text x="79" y="216" fill="#D9E7F7" font-size="18">HTML</text>
+    <circle cx="239" cy="211" r="3" fill="#00E5FF" filter="url(#glow)"><animate attributeName="opacity" values=".4;1;.4" dur="3.5s" repeatCount="indefinite"/></circle>
+  </g>
+  <g>
+    <rect x="30" y="244" width="217" height="34" rx="8" fill="#091322" stroke="#17405D"/>
+    <rect x="40" y="250" width="29" height="22" rx="5" fill="#14243A"/>
+    <text x="54.5" y="265" text-anchor="middle" fill="#72C7FF" font-size="12" font-weight="700">#</text>
+    <text x="79" y="266" fill="#D9E7F7" font-size="18">CSS</text>
+    <circle cx="239" cy="261" r="3" fill="#00E5FF" filter="url(#glow)"><animate attributeName="opacity" values="1;.35;1" dur="2.9s" repeatCount="indefinite"/></circle>
+  </g>
+</g>
+
+<!-- Central code workspace and laptop. -->
+<g filter="url(#glow)">
+  <rect x="322" y="82" width="356" height="147" rx="13" fill="#090F1E" stroke="url(#screen-edge)" stroke-width="1.5"/>
+  <rect x="332" y="92" width="336" height="24" rx="6" fill="#0E1728"/>
+</g>
+<circle cx="346" cy="104" r="3" fill="#FF687A"/>
+<circle cx="358" cy="104" r="3" fill="#FFD166"/>
+<circle cx="370" cy="104" r="3" fill="#52D6A3"/>
+<text x="500" y="108" text-anchor="middle" fill="#7184A4" font-family="Consolas,monospace" font-size="9">TANU / DEVELOPER WORKSPACE</text>
+<text x="351" y="143" fill="#8B5CF6" font-family="Consolas,monospace" font-size="12">&lt;</text>
+<text x="366" y="143" fill="#67DDF2" font-family="Consolas,monospace" font-size="12">code</text>
+<text x="405" y="143" fill="#D9E7F7" font-family="Consolas,monospace" font-size="12">·</text>
+<text x="419" y="143" fill="#67DDF2" font-family="Consolas,monospace" font-size="12">build</text>
+<text x="459" y="143" fill="#D9E7F7" font-family="Consolas,monospace" font-size="12">·</text>
+<text x="473" y="143" fill="#52D6A3" font-family="Consolas,monospace" font-size="12">create</text>
+<text x="526" y="143" fill="#8B5CF6" font-family="Consolas,monospace" font-size="12">&gt;</text>
+<path d="M352 162h64" stroke="#1E3655" stroke-width="3" stroke-linecap="round"/>
+<path d="M352 174h113" stroke="#173B56" stroke-width="3" stroke-linecap="round"/>
+<path d="M352 186h88" stroke="#263253" stroke-width="3" stroke-linecap="round"/>
+<rect x="448" y="179" width="7" height="12" rx="1" fill="#00E5FF" filter="url(#glow)">
+  <animate attributeName="opacity" values="1;.15;1" dur="1.4s" repeatCount="indefinite"/>
+</rect>
+<path d="M353 229h294l39 23q4 3-4 4H317q-8-1-4-4z" fill="#111B2D" stroke="#466184" stroke-width="1.2"/>
+<path d="M451 235h98l-7 5h-84z" fill="#23344D"/>
+<path d="M336 255h327" stroke="#00CDEB" stroke-opacity=".5" stroke-width="1" filter="url(#glow)"/>
+
+<!-- Right-side technologies. -->
+<g font-family="Consolas,monospace">
+  <g>
+    <rect x="753" y="86" width="217" height="34" rx="8" fill="#091322" stroke="#443C72"/>
+    <rect x="763" y="92" width="29" height="22" rx="5" fill="#1A1935"/>
+    <text x="777.5" y="107" text-anchor="middle" fill="#A8B3FF" font-size="13" font-weight="700">R</text>
+    <text x="802" y="108" fill="#D9E7F7" font-size="18">React</text>
+    <circle cx="755" cy="103" r="3" fill="#8B5CF6" filter="url(#glow)"><animate attributeName="opacity" values=".4;1;.4" dur="2.8s" repeatCount="indefinite"/></circle>
+  </g>
+  <g>
+    <rect x="753" y="126" width="217" height="34" rx="8" fill="#091322" stroke="#443C72"/>
+    <rect x="763" y="132" width="29" height="22" rx="5" fill="#1A1935"/>
+    <text x="777.5" y="147" text-anchor="middle" fill="#F0A7FF" font-size="9" font-weight="700">Git</text>
+    <text x="802" y="148" fill="#D9E7F7" font-size="18">Git</text>
+    <circle cx="755" cy="143" r="3" fill="#8B5CF6" filter="url(#glow)"><animate attributeName="opacity" values="1;.35;1" dur="3.2s" repeatCount="indefinite"/></circle>
+  </g>
+  <g>
+    <rect x="753" y="166" width="217" height="34" rx="8" fill="#091322" stroke="#443C72"/>
+    <rect x="763" y="172" width="29" height="22" rx="5" fill="#1A1935"/>
+    <text x="777.5" y="187" text-anchor="middle" fill="#E0D8FF" font-size="8" font-weight="700">GH</text>
+    <text x="802" y="188" fill="#D9E7F7" font-size="18">GitHub</text>
+    <circle cx="755" cy="183" r="3" fill="#8B5CF6" filter="url(#glow)"><animate attributeName="opacity" values=".35;1;.35" dur="3.4s" repeatCount="indefinite"/></circle>
+  </g>
+  <g>
+    <rect x="753" y="206" width="217" height="34" rx="8" fill="#091322" stroke="#443C72"/>
+    <rect x="763" y="212" width="29" height="22" rx="5" fill="#1A1935"/>
+    <text x="777.5" y="227" text-anchor="middle" fill="#72E1D4" font-size="11" font-weight="700">{ }</text>
+    <text x="802" y="228" fill="#D9E7F7" font-size="18">DSA</text>
+    <circle cx="755" cy="223" r="3" fill="#8B5CF6" filter="url(#glow)"><animate attributeName="opacity" values="1;.4;1" dur="2.6s" repeatCount="indefinite"/></circle>
+  </g>
+  <g>
+    <rect x="753" y="246" width="217" height="34" rx="8" fill="#091322" stroke="#443C72"/>
+    <rect x="763" y="252" width="29" height="22" rx="5" fill="#1A1935"/>
+    <text x="777.5" y="267" text-anchor="middle" fill="#63A7FF" font-size="8" font-weight="700">VS</text>
+    <text x="802" y="268" fill="#D9E7F7" font-size="18">VS Code</text>
+    <circle cx="755" cy="263" r="3" fill="#8B5CF6" filter="url(#glow)"><animate attributeName="opacity" values=".35;1;.35" dur="3s" repeatCount="indefinite"/></circle>
+  </g>
+  <g>
+    <rect x="753" y="286" width="217" height="34" rx="8" fill="#091322" stroke="#443C72"/>
+    <rect x="763" y="292" width="29" height="22" rx="5" fill="#1A1935"/>
+    <text x="777.5" y="307" text-anchor="middle" fill="#69C5E8" font-size="8" font-weight="700">SQL</text>
+    <text x="802" y="308" fill="#D9E7F7" font-size="18">MySQL</text>
+    <circle cx="755" cy="303" r="3" fill="#8B5CF6" filter="url(#glow)"><animate attributeName="opacity" values="1;.35;1" dur="3.6s" repeatCount="indefinite"/></circle>
+  </g>
+</g>
+</svg>

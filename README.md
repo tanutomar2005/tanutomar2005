@@ -1,79 +1,74 @@
 <div align="center">
 
-# TANU TOMAR
+# Hi, I'm Tanu Tomar
 
 ### Full Stack Developer · B.Tech CSE Student · Problem Solver
 
-Building practical software, learning continuously, and turning ideas into useful products.
+Building practical software, strengthening fundamentals, and learning one commit at a time.
 
-<img src="./assets/hero.svg" alt="Tanu Tomar developer mission control" width="100%" />
+**Building:** full-stack products · **Learning:** DSA, REST APIs, Docker &amp; deployment
 
-<a href="https://github.com/tanutomar2005">GitHub Profile</a>
+`Python` · `JavaScript` · `React.js` · `REST APIs` · `Docker`
+
+<a href="https://github.com/tanutomar2005">GitHub</a> · <a href="https://github.com/tanutomar2005?tab=repositories">Repositories</a>
 
 </div>
 
----
-
-## 🚀 DEVELOPER CONTROL CENTER
+## ⚡ GITHUB PULSE
 
 <div align="center">
-<img src="./assets/mission.svg" alt="Learn deliberately. Build honestly. Keep moving." width="100%" />
-</div>
-
-<table>
-<tr>
-<td width="33%" align="center"><strong>BUILD</strong><br />Full stack products</td>
-<td width="34%" align="center"><strong>PRACTICE</strong><br />Problem solving &amp; DSA</td>
-<td width="33%" align="center"><strong>EXPLORE</strong><br />Development &amp; deployment</td>
-</tr>
-</table>
-
-## ⚡ MY SKILL CLOCK
-
-<div align="center">
-<img src="./assets/skill-clock.gif" width="420" alt="Tanu Tomar Skill Clock, an animated view of my development toolkit" />
+<sub>GitHub API snapshot for <a href="https://github.com/tanutomar2005">@tanutomar2005</a> · refreshes every six hours</sub>
 <br />
-<sub>Exploring technologies, strengthening fundamentals, and continuously expanding my development toolkit.</sub>
+<img src="./assets/github-pulse.svg" alt="GitHub profile data sync status for tanutomar2005" width="100%" />
 </div>
 
-## ABOUT ME
+## 💻 MY SKILLS
+
+<div align="center">
+
+**Turning ideas into real world solutions ✨**
+
+<img src="./assets/skills-workspace.svg" alt="Futuristic developer skill panel with a central laptop workspace and Python, React, JavaScript, HTML, CSS, Git, GitHub, DSA, VS Code, and MySQL nodes" width="100%" />
+
+</div>
+
+## 📊 GITHUB ACTIVITY
+
+<sub>Automatically refreshed from public GitHub API data for tanutomar2005</sub>
+
+<p align="center">
+	<img src="./assets/github-activity.svg" alt="Rolling-year GitHub contribution activity and profile metrics for tanutomar2005" width="100%" />
+</p>
 
 <table>
 <tr>
-<td width="50%" valign="top">
-
-- 🎓 B.Tech CSE Student at **ABES Institute of Technology, Ghaziabad**
-- 💻 Full Stack Developer
-- 🧠 Problem solving &amp; Data Structures and Algorithms
-
-</td>
-<td width="50%" valign="top">
-
-- 🚀 Building real-world projects
-- 🌱 Continuously learning
-- 🔧 Exploring development &amp; deployment
-
-</td>
+<td width="50%" valign="top"><img src="./assets/github-languages-repo.svg" alt="Top languages by public repository for tanutomar2005" width="100%" /></td>
+<td width="50%" valign="top"><img src="./assets/github-languages-commit.svg" alt="Top languages by source-code bytes across public repositories for tanutomar2005" width="100%" /></td>
 </tr>
 </table>
 
-## TECHNOLOGY STACK
+<table>
+<tr>
+<td width="50%" valign="top"><img src="./assets/github-stats.svg" alt="GitHub stars, commits, pull requests, issues, and contributed repositories for tanutomar2005" width="100%" /></td>
+<td width="50%" valign="top"><img src="./assets/github-commits-hourly.svg" alt="Monthly GitHub contributions over the rolling year for tanutomar2005" width="100%" /></td>
+</tr>
+</table>
 
-| Focus | Tools and technologies |
-|:--|:--|
-| **Languages** | `Python` · `JavaScript` |
-| **Frontend** | `HTML` · `CSS` · `React.js` · `Tailwind CSS` |
-| **Development** | `REST APIs` · `Git` · `GitHub` · `VS Code` |
-| **Deployment** | `Docker` |
-| **Problem Solving** | `Data Structures & Algorithms` |
+### 🐍 Contribution Flow
 
-## 🚀 PROJECT GALAXY
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/tanutomar2005/tanutomar2005/output/github-snake-dark.svg" />
+<source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/tanutomar2005/tanutomar2005/output/github-snake.svg" />
+<img alt="Animated contribution snake generated from Tanu Tomar's GitHub contribution graph" src="https://raw.githubusercontent.com/tanutomar2005/tanutomar2005/output/github-snake.svg" width="100%" />
+</picture>
+
+## 🚀 FEATURED PROJECTS
 
 <table>
 <tr>
 <td width="50%" valign="top">
 
-### 🚗 CampusPool
+### CampusPool
 
 Campus-focused product exploring how software can make campus coordination more useful and accessible.
 
@@ -82,7 +77,7 @@ Campus-focused product exploring how software can make campus coordination more 
 </td>
 <td width="50%" valign="top">
 
-### 🏛️ JanTrack
+### JanTrack
 
 Transparent government complaint tracking, from submission through resolution and citizen feedback.
 
@@ -93,7 +88,7 @@ Transparent government complaint tracking, from submission through resolution an
 <tr>
 <td width="50%" valign="top">
 
-### 📑 TenderX
+### TenderX
 
 AI-assisted public procurement workflows for tender publishing, bid evaluation, and accountable decisions.
 
@@ -102,7 +97,7 @@ AI-assisted public procurement workflows for tender publishing, bid evaluation, 
 </td>
 <td width="50%" valign="top">
 
-### 🎓 UptoSkills LMS
+### UptoSkills LMS
 
 A learning platform for students, instructors, and administrators, with role-based access and REST APIs.
 
@@ -112,67 +107,7 @@ A learning platform for students, instructors, and administrators, with role-bas
 </tr>
 </table>
 
-## 📡 GITHUB ACTIVITY
-
-<div align="center">
-<sub>Live GitHub API snapshots · refreshed automatically every six hours</sub>
-<br />
-<a href="https://github.com/tanutomar2005">DATA SOURCE / github.com/tanutomar2005</a>
-</div>
-
-<div align="center">
-<table>
-<tr>
-<td width="50%" valign="top"><img src="./assets/github-stats.svg" alt="GitHub profile counters for tanutomar2005 from the GitHub API" width="100%" /></td>
-<td width="50%" valign="top"><img src="./assets/top-languages.svg" alt="Language breakdown calculated from tanutomar2005 public repositories" width="100%" /></td>
-</tr>
-</table>
-<img src="./assets/contributions.svg" alt="Contribution calendar generated from tanutomar2005 GitHub contribution data" width="100%" />
-</div>
-
-<img src="./assets/repository-radar.svg" alt="Recently updated public repositories and metadata for tanutomar2005" width="100%" />
-
-<hr />
-
-## 🐍 CONTRIBUTION SNAKE
-
-<div align="center">
-<sub>Real contribution activity, automatically generated from my GitHub contribution graph.</sub>
-<br /><br />
-<picture>
-<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/tanutomar2005/tanutomar2005/output/github-snake-dark.svg" />
-<source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/tanutomar2005/tanutomar2005/output/github-snake.svg" />
-<img alt="Tanu Tomar GitHub contribution snake" src="https://raw.githubusercontent.com/tanutomar2005/tanutomar2005/output/github-snake.svg" width="100%" />
-</picture>
-</div>
-
-<sub>Generated daily from the public contribution graph. Images publish to the output branch after the first successful workflow run.</sub>
-
-## ⚙️ TECHNOLOGY RADAR
-
-<div align="center">
-<img src="./assets/technology.svg" alt="Tanu Tomar's technology radar: Python, JavaScript, React.js, HTML, CSS, Tailwind CSS, REST APIs, Git, GitHub, Docker, DSA, and VS Code" width="100%" />
-</div>
-
-## 🌱 CURRENTLY LEARNING
-
-<div align="center">
-<img src="./assets/learning-path.svg" alt="Learning path from foundations through frontend, backend, databases, and engineering" width="100%" />
-<img src="./assets/learning.svg" alt="Current learning focus across problem solving, full stack development, REST APIs, Docker, deployment, and software development" width="100%" />
-</div>
-
-**Data Structures & Algorithms** · **Full Stack Development** · **REST APIs** · **Docker** · **Deployment** · **Real-World Software Development**
-
-## 🧠 DEVELOPER MINDSET
-
-<div align="center">
-
-> Learn with curiosity. Build with purpose.<br />
-> Solve problems. Keep improving.
-
-</div>
-
-## 📫 CONNECT WITH ME
+## CONNECT
 
 <div align="center">
 
