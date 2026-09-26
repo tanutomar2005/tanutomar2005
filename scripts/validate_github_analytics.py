@@ -55,7 +55,13 @@ def validate_asset(filename: str, expected_title: str) -> None:
         ]
         has_graph = len(numeric_values) >= 1 and sum(element.tag.endswith("rect") for element in elements) >= 6
     else:
-        bars = [element for element in elements if element.tag.endswith("rect") and element.get("rx") == "3"]
+        bars = [
+            element for element in elements
+            if element.tag.endswith("rect")
+            and element.get("rx") == "3"
+            and 58 <= float(element.get("x", "-1")) <= 575
+            and 96 <= float(element.get("y", "-1")) <= 260
+        ]
         has_graph = len(bars) == 12 and all(float(bar.get("height", "0")) >= 0 for bar in bars)
     if not has_graph:
         raise ValueError(f"{filename} is missing its expected chart/statistics content")
