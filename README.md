@@ -62,55 +62,49 @@ Building practical software, strengthening fundamentals, and learning one commit
 <img alt="Animated contribution snake generated from Tanu Tomar's GitHub contribution graph" src="https://raw.githubusercontent.com/tanutomar2005/tanutomar2005/output/github-snake.svg" width="100%" />
 </picture>
 
+---
+
 ## 🚀 FEATURED PROJECTS
 
 <table>
 <tr>
 <td width="50%" valign="top">
 
-### CampusPool
-
-Campus-focused product exploring how software can make campus coordination more useful and accessible.
-
-<sub><strong>STACK</strong> Not confirmed in the available project files</sub>
+<img src="./assets/project-campuspool.svg" width="100%" alt="CampusPool. Campus-focused product exploring how software can make campus coordination more useful and accessible. Stack: Not confirmed in the available project files." />
 
 </td>
 <td width="50%" valign="top">
 
-### JanTrack
-
-Transparent government complaint tracking, from submission through resolution and citizen feedback.
-
-<sub><strong>STACK</strong> React · JavaScript · Vite</sub>
+<img src="./assets/project-jantrack.svg" width="100%" alt="JanTrack. Transparent government complaint tracking, from submission through resolution and citizen feedback. Stack: React, JavaScript, Vite." />
 
 </td>
 </tr>
 <tr>
 <td width="50%" valign="top">
 
-### TenderX
-
-AI-assisted public procurement workflows for tender publishing, bid evaluation, and accountable decisions.
-
-<sub><strong>STACK</strong> Python · FastAPI · React · Docker</sub>
+<img src="./assets/project-tenderx.svg" width="100%" alt="TenderX. AI-assisted public procurement workflows for tender publishing, bid evaluation, and accountable decisions. Stack: Python, FastAPI, React, Docker." />
 
 </td>
 <td width="50%" valign="top">
 
-### UptoSkills LMS
-
-A learning platform for students, instructors, and administrators, with role-based access and REST APIs.
-
-<sub><strong>STACK</strong> React · TypeScript · Node.js · Express · PostgreSQL</sub>
+<img src="./assets/project-uptoskills-lms.svg" width="100%" alt="UptoSkills LMS. A learning platform for students, instructors, and administrators, with role-based access and REST APIs. Stack: React, TypeScript, Node.js, Express, PostgreSQL." />
 
 </td>
 </tr>
 </table>
 
-## CONNECT
+---
+
+## 🔗 CONNECT
 
 <div align="center">
 
-<a href="https://github.com/tanutomar2005">GitHub · @tanutomar2005</a>
+<a href="https://github.com/tanutomar2005"><img src="https://img.shields.io/badge/GitHub-Profile-0A1020?style=for-the-badge&amp;logo=github&amp;logoColor=00E5FF&amp;labelColor=03050B" alt="GitHub profile: @tanutomar2005" /></a>
+&nbsp;&nbsp;
+<a href="https://www.linkedin.com/in/tanu-tomar-685045356"><img src="https://img.shields.io/badge/LinkedIn-Connect-0A1020?style=for-the-badge&amp;logo=linkedin&amp;logoColor=8B5CF6&amp;labelColor=03050B" alt="LinkedIn profile" /></a>
 
 </div>
+
+<p align="center">
+	<img src="./assets/footer.svg" alt="Learn, build, debug, evolve" width="100%" />
+</p>
